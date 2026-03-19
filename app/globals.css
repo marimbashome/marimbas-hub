@@ -1,5 +1,5 @@
 /* ===== Marimbas Design System — Canonical Tokens ===== */
-@import './_design-system/tokens.css';
+@import '../_design-system/tokens.css';
 
 :root {
     /* Backward-compatible aliases → design system tokens */
