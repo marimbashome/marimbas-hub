@@ -1,0 +1,131 @@
+/* ============================================================
+   MARIMBAS HOME — Design Tokens (CSS Custom Properties)
+   Source of truth for the entire Marimbas ecosystem.
+   Last updated: 2026-03-19
+   ============================================================ */
+
+:root {
+  /* ── Core Brand Colors ─────────────────────────────── */
+  --m-deep-forest: #1B3A1A;
+  --m-chiapas-green: #3D6B35;
+  --m-chiapas-green-light: #4A7E40;
+  --m-amber-warm: #C9A96E;
+  --m-terracotta: #C67B5C;
+  --m-terracotta-light: #D4927A;
+  --m-adobe: #8B6F47;
+
+  /* ── Neutrals ──────────────────────────────────────── */
+  --m-linen: #F5F0E8;
+  --m-sand: #E8DFD1;
+  --m-cream: #FAF7F2;
+  --m-charcoal: #2C2C2C;
+  --m-charcoal-light: #4A4A4A;
+  --m-muted: #8B8B8B;
+  --m-white: #FFFFFF;
+
+  /* ── Accent / Functional ───────────────────────────── */
+  --m-gold: #FFD700;
+  --m-gold-muted: #D4A847;
+  --m-sage: #96CEB4;
+  --m-teal: #4ECDC4;
+  --m-coral: #E17055;
+  --m-slate: #4A6FA5;
+
+  /* ── Dark Mode (admin/internal) ────────────────────── */
+  --m-dark-bg: #0d1117;
+  --m-dark-card: #161b22;
+  --m-dark-border: #30363d;
+  --m-dark-text: #e6edf3;
+  --m-dark-muted: #8b949e;
+  --m-dark-accent: #5c85ff;
+
+  /* ── Semantic Aliases ──────────────────────────────── */
+  --m-primary: var(--m-chiapas-green);
+  --m-primary-hover: var(--m-chiapas-green-light);
+  --m-secondary: var(--m-terracotta);
+  --m-secondary-hover: var(--m-terracotta-light);
+  --m-accent: var(--m-amber-warm);
+  --m-success: var(--m-sage);
+  --m-warning: var(--m-gold);
+  --m-danger: var(--m-coral);
+  --m-info: var(--m-teal);
+
+  /* ── Surface Colors ────────────────────────────────── */
+  --m-surface-primary: var(--m-cream);
+  --m-surface-secondary: var(--m-linen);
+  --m-surface-card: var(--m-white);
+  --m-surface-elevated: var(--m-white);
+
+  /* ── Text Colors ───────────────────────────────────── */
+  --m-text-primary: var(--m-charcoal);
+  --m-text-secondary: var(--m-charcoal-light);
+  --m-text-muted: var(--m-muted);
+  --m-text-on-primary: var(--m-white);
+  --m-text-on-dark: var(--m-dark-text);
+
+  /* ── Typography ────────────────────────────────────── */
+  --m-font-serif: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  --m-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --m-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* ── Font Sizes (fluid) ────────────────────────────── */
+  --m-text-display: clamp(2.5rem, 5vw, 4rem);
+  --m-text-h1: clamp(2rem, 4vw, 3rem);
+  --m-text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --m-text-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --m-text-body: 1rem;
+  --m-text-sm: 0.875rem;
+  --m-text-xs: 0.75rem;
+
+  /* ── Spacing Scale ─────────────────────────────────── */
+  --m-space-1: 0.25rem;
+  --m-space-2: 0.5rem;
+  --m-space-3: 0.75rem;
+  --m-space-4: 1rem;
+  --m-space-6: 1.5rem;
+  --m-space-8: 2rem;
+  --m-space-12: 3rem;
+  --m-space-16: 4rem;
+  --m-space-24: 6rem;
+
+  /* ── Border Radius ─────────────────────────────────── */
+  --m-radius-sm: 6px;
+  --m-radius-md: 8px;
+  --m-radius-lg: 12px;
+  --m-radius-xl: 20px;
+  --m-radius-full: 9999px;
+
+  /* ── Shadows ───────────────────────────────────────── */
+  --m-shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --m-shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --m-shadow-lg: 0 12px 40px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.05);
+  --m-shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --m-shadow-card-hover: 0 4px 12px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
+  --m-shadow-elevated: 0 8px 30px rgba(0,0,0,0.12);
+
+  /* ── Transitions ───────────────────────────────────── */
+  --m-transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --m-transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --m-transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Layout ────────────────────────────────────────── */
+  --m-max-width: 1200px;
+  --m-max-width-wide: 1440px;
+  --m-max-width-narrow: 768px;
+  --m-nav-height: 72px;
+}
+
+/* ── Dark Mode Override ────────────────────────────── */
+[data-theme="dark"],
+.dark {
+  --m-surface-primary: var(--m-dark-bg);
+  --m-surface-secondary: #0a0e16;
+  --m-surface-card: var(--m-dark-card);
+  --m-surface-elevated: #1c2333;
+  --m-text-primary: var(--m-dark-text);
+  --m-text-secondary: #c9d8f0;
+  --m-text-muted: var(--m-dark-muted);
+  --m-primary: var(--m-dark-accent);
+  --m-shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+  --m-shadow-card-hover: 0 4px 12px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.3);
+}

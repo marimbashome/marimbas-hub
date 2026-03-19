@@ -1,17 +1,16 @@
 import type { Metadata } from 'next'
-import { DM_Serif_Display, Inter } from 'next/font/google'
+import { Playfair_Display, Inter } from 'next/font/google'
 import './globals.css'
 
-const dmSerif = DM_Serif_Display({
-  weight: '400',
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-playfair',
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -34,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${dmSerif.variable} ${inter.variable}`}>
+    <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
       <body>{children}</body>
     </html>
   )
