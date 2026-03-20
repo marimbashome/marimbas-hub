@@ -20,7 +20,7 @@ export default function Owners() {
             <div className="section-label" style={{ color: 'var(--chiapas)' }}>{t('own_label')}</div>
             <h2>{t('own_title')}</h2>
             <p className="section-desc" style={{ marginBottom: 32 }}>{t('own_desc')}</p>
-            <a href="mailto:enrique.miceli@gmail.com" className="btn btn-slate">
+            <a href="https://propietarios.marimbashome.com" className="btn btn-slate">
               {t('own_btn')} <ArrowIcon />
             </a>
           </div>

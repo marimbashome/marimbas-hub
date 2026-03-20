@@ -43,7 +43,7 @@ export default function Products() {
         </div>
         <FadeUp className="products-bottom">
           <p><strong>{t('prod_bottom_pre')}</strong>{t('prod_bottom_post')}</p>
-          <a href="mailto:enrique.miceli@gmail.com?subject=Marimbas%20Products" className="btn btn-white">
+          <a href="https://propietarios.marimbashome.com" className="btn btn-white">
             {t('prod_bottom_btn')} <ArrowIcon />
           </a>
         </FadeUp>
