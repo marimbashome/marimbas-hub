@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marimbas Home — Tu Hogar en México</title>
+<meta name="description" content="Departamentos y casas para tu próxima estancia en Ciudad de México y Chiapas. Más de 5,000 huéspedes confían en Marimbas Home desde 2015.">
+<meta property="og:title" content="Marimbas Home — Tu Hogar en México">
+<meta property="og:description" content="Espacios con carácter en CDMX y Chiapas. Check-in digital, atención personal, más de 10 años de experiencia.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marimbashome.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Marimbas Home Design System — aligned to canonical tokens */
+:root {
+    /* Primary brand → chiapas-green (was slate) */
+    --slate: #3D6B35;
+    --slate-light: #4A7E40;
+    --slate-dark: #1B3A1A;
+    /* Secondary → terracotta (unchanged) */
+    --copper: #C67B5C;
+    --copper-light: #D4927A;
+    --copper-dark: #A8624A;
+    /* Accents (unchanged — already aligned) */
+    --gold: #FFD700;
+    --gold-muted: #D4A847;
+    --chiapas: #3D6B35;
+    --sage: #96CEB4;
+    --teal: #4ECDC4;
+    --coral: #e17055;
+    /* Neutrals (unchanged) */
+    --linen: #F5F0E8;
+    --sand: #E8DFD1;
+    --cream: #FAF7F2;
+    --charcoal: #2C2C2C;
+    --charcoal-light: #4A4A4A;
+    --muted: #8B8B8B;
+    --white: #FFFFFF;
+
+    /* Typography — Playfair Display replaces DM Serif */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.05);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+    font-family: var(--font-sans);
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+::selection { background: rgba(74, 111, 165, 0.2); }
+
+/* ========== NAV ========== */
+.nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 24px; transition: var(--transition);
+}
+.nav.scrolled {
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+}
+.nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; height: 72px;
+}
+.nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: var(--charcoal);
+}
+.nav-logo-icon { width: 36px; height: 36px; }
+.nav-logo-text { font-family: var(--font-serif); font-size: 20px; letter-spacing: -0.02em; }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a {
+    text-decoration: none; color: var(--charcoal-light);
+    font-size: 14px; font-weight: 500; transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--slate); }
+.nav-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 22px; background: var(--copper); color: var(--white) !important;
+    border-radius: 100px; font-weight: 600; font-size: 13px;
+    transition: all var(--transition);
+}
+.nav-cta:hover { background: var(--copper-dark); transform: translateY(-1px); }
+.lang-toggle {
+    background: none; border: 1.5px solid var(--sand); border-radius: 6px;
+    padding: 4px 10px; font-size: 12px; font-weight: 700; color: var(--charcoal-light);
+    cursor: pointer; transition: all var(--transition); letter-spacing: 0.03em;
+}
+.lang-toggle:hover { border-color: var(--slate); color: var(--slate); }
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-mobile span { display: block; width: 22px; height: 2px; background: var(--charcoal); margin: 5px 0; transition: var(--transition); }
+
+/* ========== HERO ========== */
+.hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 120px 24px 80px; position: relative; overflow: hidden;
+}
+.hero::before {
+    content: ''; position: absolute; top: -20%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(74,111,165,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.hero::after {
+    content: ''; position: absolute; bottom: -10%; left: -5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(198,123,92,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.hero-content { max-width: 800px; text-align: center; position: relative; z-index: 1; }
+.hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 18px; background: var(--sand); border-radius: 100px;
+    font-size: 13px; font-weight: 500; color: var(--charcoal-light); margin-bottom: 28px;
+}
+.hero-dot { width: 8px; height: 8px; background: var(--sage); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 24px;
+}
+.hero h1 em { font-style: italic; color: var(--slate); }
+.hero-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem); color: var(--charcoal-light);
+    max-width: 540px; margin: 0 auto 40px; line-height: 1.75; font-weight: 300;
+}
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* BUTTONS */
+.btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 600;
+    text-decoration: none; transition: all var(--transition); border: none; cursor: pointer;
+}
+.btn-copper { background: var(--copper); color: var(--white); box-shadow: 0 4px 16px rgba(198,123,92,0.25); }
+.btn-copper:hover { background: var(--copper-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(198,123,92,0.3); }
+.btn-ghost { background: var(--white); color: var(--charcoal); border: 1.5px solid var(--sand); }
+.btn-ghost:hover { border-color: var(--copper); color: var(--copper); transform: translateY(-2px); }
+.btn-slate { background: var(--slate); color: var(--white); box-shadow: 0 4px 16px rgba(74,111,165,0.25); }
+.btn-slate:hover { background: var(--slate-dark); transform: translateY(-2px); }
+.btn-white { background: var(--white); color: var(--charcoal); }
+.btn-white:hover { background: var(--linen); transform: translateY(-1px); }
+.btn-outline-light { background: transparent; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); }
+.btn-outline-light:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.arrow-icon { width: 16px; height: 16px; }
+
+/* TRUST BAR */
+.trust-bar {
+    display: flex; justify-content: center; gap: 56px;
+    margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--sand);
+}
+.trust-item { text-align: center; }
+.trust-num { font-family: var(--font-serif); font-size: 2.2rem; color: var(--slate); line-height: 1; }
+.trust-label { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; }
+
+/* ========== CHANNELS STRIP ========== */
+.channels {
+    padding: 40px 24px; background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.channels-inner {
+    max-width: 900px; margin: 0 auto; text-align: center;
+}
+.channels-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 20px; }
+.channels-logos {
+    display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap;
+}
+.channel-logo {
+    font-size: 18px; font-weight: 700; color: var(--charcoal-light); opacity: 0.35;
+    letter-spacing: -0.02em; transition: opacity var(--transition);
+}
+.channel-logo:hover { opacity: 0.6; }
+.channel-logo span { font-weight: 400; }
+
+/* ========== SECTIONS COMMON ========== */
+.section { padding: 100px 24px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: var(--copper);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;
+}
+.section-label::before { content: ''; display: inline-block; width: 24px; height: 2px; background: currentColor; }
+.section-title {
+    font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px;
+}
+.section-desc {
+    font-size: 1.05rem; color: var(--charcoal-light); max-width: 600px;
+    line-height: 1.7; font-weight: 300;
+}
+
+/* ========== ABOUT ========== */
+.about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-card {
+    background: var(--linen); border-radius: var(--radius-lg); padding: 44px 36px; position: relative;
+}
+.about-card-border {
+    position: absolute; inset: -8px; border-radius: calc(var(--radius-lg) + 4px);
+    border: 2px solid var(--sand); z-index: -1;
+}
+.about-card-title { font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 6px; }
+.about-card-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.promise-item {
+    display: flex; gap: 14px; align-items: flex-start; padding: 13px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.promise-item:last-child { border-bottom: none; }
+.promise-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+}
+.pi-copper { background: rgba(198,123,92,0.1); }
+.pi-slate { background: rgba(74,111,165,0.1); }
+.pi-sage { background: rgba(150,206,180,0.15); }
+.pi-chiapas { background: rgba(61,107,53,0.1); }
+.promise-text strong { display: block; font-size: 14px; color: var(--charcoal); margin-bottom: 1px; }
+.promise-text span { font-size: 13px; color: var(--charcoal-light); }
+.guest-fav {
+    margin-top: 24px; padding: 18px 20px; border-radius: var(--radius);
+    background: #fff; border: 1px solid rgba(0,0,0,0.08);
+    font-size: 13px; color: var(--charcoal-light); line-height: 1.6;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.guest-fav strong { color: var(--charcoal); }
+.guest-fav-badge { flex-shrink: 0; }
+.guest-fav-text { flex: 1; }
+
+/* ========== EXPERIENCE ========== */
+.experience { background: var(--cream); }
+.exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.exp-card {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.05);
+    border-radius: var(--radius-lg); padding: 36px 30px;
+    transition: all var(--transition); position: relative; overflow: hidden;
+}
+.exp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.exp-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    opacity: 0; transition: opacity var(--transition);
+}
+.exp-card:hover::after { opacity: 1; }
+.exp-card[data-c="copper"]::after { background: var(--copper); }
+.exp-card[data-c="slate"]::after { background: var(--slate); }
+.exp-card[data-c="sage"]::after { background: var(--sage); }
+.exp-icon {
+    width: 50px; height: 50px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 23px; margin-bottom: 20px;
+}
+.exp-card h3 { font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 10px; }
+.exp-card p { font-size: 14px; color: var(--charcoal-light); line-height: 1.7; margin-bottom: 14px; }
+.exp-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; color: var(--slate);
+    text-decoration: none; transition: gap var(--transition);
+}
+.exp-link:hover { gap: 10px; }
+
+/* ========== TESTIMONIAL ========== */
+.testimonial {
+    background: var(--linen); padding: 80px 24px; text-align: center;
+}
+.testimonial-inner { max-width: 700px; margin: 0 auto; }
+.testimonial-quote {
+    font-family: var(--font-serif); font-size: clamp(1.3rem, 3vw, 1.7rem);
+    line-height: 1.5; color: var(--charcoal); margin-bottom: 24px;
+    font-style: italic;
+}
+.testimonial-quote::before { content: '"'; color: var(--copper); font-size: 2em; line-height: 0; vertical-align: -0.25em; margin-right: 4px; }
+.testimonial-quote::after { content: '"'; color: var(--copper); font-size: 2em; line-height: 0; vertical-align: -0.25em; margin-left: 4px; }
+.testimonial-author { font-size: 14px; color: var(--muted); font-weight: 500; }
+.testimonial-stars { color: var(--gold); font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+.testimonial-slides { position: relative; min-height: 160px; }
+.testimonial-slide {
+    position: absolute; inset: 0; opacity: 0;
+    transition: opacity 0.6s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.testimonial-slide.active { opacity: 1; position: relative; }
+.testimonial-dots { display: flex; gap: 8px; justify-content: center; margin-top: 20px; }
+.testimonial-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--sand);
+    border: none; cursor: pointer; transition: background var(--transition); padding: 0;
+}
+.testimonial-dot.active { background: var(--copper); }
+
+/* ========== PRODUCTS ========== */
+.products { background: var(--charcoal); color: var(--white); overflow: hidden; position: relative; }
+.products::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+        radial-gradient(ellipse at 10% 20%, rgba(74,111,165,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(198,123,92,0.06) 0%, transparent 50%);
+}
+.products .section-inner { position: relative; z-index: 1; }
+.products-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 48px; }
+.products-intro .section-label { color: var(--gold-muted); }
+.products-intro .section-title { color: var(--white); }
+.products-intro-right { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; padding-bottom: 4px; }
+.products-intro-right strong { color: rgba(255,255,255,0.85); }
+
+.prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.prod-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--radius-lg); padding: 32px 28px;
+    transition: all var(--transition);
+}
+.prod-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); transform: translateY(-3px); }
+.prod-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.prod-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+}
+.prod-badge {
+    padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+}
+.badge-live { background: rgba(150,206,180,0.15); color: var(--sage); }
+.badge-soon { background: rgba(255,215,0,0.12); color: var(--gold-muted); }
+.prod-card h3 { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 6px; color: var(--white); }
+.prod-for { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+.prod-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 18px; }
+.prod-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.prod-tag {
+    padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 500;
+    background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.prod-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 22px; border-radius: 100px; font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: all var(--transition);
+}
+.products-bottom {
+    text-align: center; margin-top: 48px; padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+.products-bottom p { font-size: 15px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+.products-bottom p strong { color: rgba(255,255,255,0.8); }
+
+/* ========== PROPERTIES ========== */
+.properties { background: var(--white); }
+.prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+.prop-zone {
+    background: var(--cream); border-radius: var(--radius-lg);
+    padding: 36px 32px; border: 1px solid rgba(0,0,0,0.04);
+    transition: all var(--transition);
+}
+.prop-zone:hover { box-shadow: var(--shadow-md); border-color: rgba(0,0,0,0.08); }
+.prop-zone-name { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 8px; }
+.prop-zone-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.prop-highlights { display: flex; flex-wrap: wrap; gap: 8px; }
+.prop-tag {
+    padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500;
+    background: var(--white); color: var(--charcoal-light); border: 1px solid rgba(0,0,0,0.06);
+}
+.prop-stats {
+    display: flex; gap: 24px; margin-top: 24px; padding-top: 18px;
+    border-top: 1px solid var(--sand);
+}
+.prop-stat { text-align: center; flex: 1; }
+.prop-stat-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--slate); line-height: 1; }
+.prop-stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ========== OWNERS ========== */
+.owners { background: var(--linen); padding: 100px 24px; }
+.owners-inner { max-width: 1100px; margin: 0 auto; }
+.owners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.owners h2 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,2.6rem); line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.02em; }
+.owners .section-desc { color: var(--charcoal-light); max-width: none; }
+.owner-benefit { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
+.owner-check {
+    width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(61,107,53,0.1); color: var(--chiapas);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; margin-top: 1px;
+}
+.owner-text { font-size: 15px; color: var(--charcoal-light); line-height: 1.6; }
+.owner-text strong { color: var(--charcoal); display: block; margin-bottom: 2px; }
+
+/* ========== FOOTER ========== */
+.footer { background: var(--charcoal); padding: 48px 24px; }
+.footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+}
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand-text { font-family: var(--font-serif); font-size: 18px; color: var(--white); }
+.footer-sub { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 6px; }
+.footer-links { display: flex; gap: 24px; list-style: none; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color var(--transition); }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1200px; margin: 24px auto 0; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center; font-size: 12px; color: rgba(255,255,255,0.25);
+}
+
+/* ========== ANIMATIONS ========== */
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up.d1 { transition-delay: 0.1s; }
+.fade-up.d2 { transition-delay: 0.2s; }
+.fade-up.d3 { transition-delay: 0.3s; }
+.fade-up.d4 { transition-delay: 0.35s; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+    .about-grid, .prop-grid, .owners-grid, .products-intro { grid-template-columns: 1fr; gap: 32px; }
+    .exp-grid, .prod-grid { grid-template-columns: 1fr; }
+    .trust-bar { gap: 32px; }
+    .nav-links { display: none; }
+    .nav-mobile { display: block; }
+    .channels-logos { gap: 32px; }
+}
+@media (max-width: 500px) {
+    .hero { padding: 100px 16px 60px; }
+    .trust-bar { flex-direction: column; gap: 20px; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .section { padding: 60px 16px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .prop-stats { flex-direction: column; gap: 12px; }
+    .channels-logos { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none">
+                <path d="M18 3L4 14v18h28V14L18 3z" stroke="#4A6FA5" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <ellipse cx="18" cy="22" rx="5" ry="7" fill="#C67B5C"/>
+                <path d="M18 10c-1 1-2 3-2 5h4c0-2-1-4-2-5z" fill="#3D6B35"/>
+                <path d="M16 12c-1.5 0-3 .5-3 1.5S14.5 15 16 15" stroke="#3D6B35" stroke-width="1.2" fill="none"/>
+                <path d="M20 12c1.5 0 3 .5 3 1.5S21.5 15 20 15" stroke="#3D6B35" stroke-width="1.2" fill="none"/>
+            </svg>
+            <span class="nav-logo-text">Marimbas Home</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about" data-i18n="nav_about">Nosotros</a></li>
+            <li><a href="#experience" data-i18n="nav_exp">Experiencia</a></li>
+            <li><a href="#tech" data-i18n="nav_prod">Productos</a></li>
+            <li><a href="#properties" data-i18n="nav_dest">Destinos</a></li>
+            <li><a href="#owners" data-i18n="nav_owners">Propietarios</a></li>
+            <li><a href="https://book.marimbashome.com" class="nav-cta" data-i18n="nav_cta">Reservar</a></li>
+            <li><button onclick="toggleLang()" class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button></li>
+        </ul>
+        <button class="nav-mobile" onclick="toggleNav()" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content fade-up">
+        <div class="hero-badge">
+            <span class="hero-dot"></span>
+            <span data-i18n="hero_badge">Más de 5,000 estancias desde 2015</span>
+        </div>
+        <h1 data-i18n="hero_h1">Tu próximo <em>hogar</em> en México te&nbsp;espera</h1>
+        <p class="hero-sub" data-i18n="hero_sub">
+            Espacios con carácter en Ciudad de México y Chiapas.
+            Check-in sin fricciones, atención de gente real, y todo
+            listo para que te sientas en casa desde que llegas.
+        </p>
+        <div class="hero-actions">
+            <a href="https://book.marimbashome.com" class="btn btn-copper">
+                <span data-i18n="hero_btn1">Buscar Disponibilidad</span>
+                <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#properties" class="btn btn-ghost" data-i18n="hero_btn2">Ver Destinos</a>
+        </div>
+        <div class="trust-bar">
+            <div class="trust-item">
+                <div class="trust-num">5,000+</div>
+                <div class="trust-label">Estancias completadas</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">10</div>
+                <div class="trust-label">Años de experiencia</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">28</div>
+                <div class="trust-label">Espacios disponibles</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CHANNELS -->
+<div class="channels fade-up">
+    <div class="channels-inner">
+        <div class="channels-label" data-i18n="channels_label">Nos encuentras en</div>
+        <div class="channels-logos">
+            <div class="channel-logo">airbnb</div>
+            <div class="channel-logo">Booking<span>.com</span></div>
+            <div class="channel-logo">VRBO</div>
+            <div class="channel-logo">HomeExchange</div>
+            <div class="channel-logo">marimbashome<span>.com</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+    <div class="section-inner">
+        <div class="about-grid">
+            <div class="fade-up">
+                <div class="section-label" data-i18n="about_label">Quiénes Somos</div>
+                <h2 class="section-title" data-i18n="about_title">Hospitalidad con el ritmo de&nbsp;la&nbsp;marimba</h2>
+                <p class="section-desc" style="margin-bottom: 20px;">
+                    Marimbas Home nació en 2015 con una idea sencilla: que cada huésped
+                    se sienta bienvenido de verdad. Empezamos con un departamento en
+                    La Condesa y hoy recibimos viajeros en dos de las regiones más
+                    fascinantes de México.
+                </p>
+                <p class="section-desc">
+                    Nuestro nombre viene de la marimba chiapaneca — el instrumento que llena
+                    de calidez cualquier espacio. Eso es lo que buscamos:
+                    que llegues a un lugar que suena a hogar.
+                </p>
+                <div class="guest-fav">
+                    <div class="guest-fav-badge">
+                        <svg width="88" height="80" viewBox="0 0 88 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Left laurel branch — thin curved leaves, well outside text zone -->
+                            <ellipse cx="6" cy="56" rx="2.2" ry="5" transform="rotate(30 6 56)" fill="#222"/>
+                            <ellipse cx="3.5" cy="46" rx="2.2" ry="5" transform="rotate(18 3.5 46)" fill="#222"/>
+                            <ellipse cx="2.5" cy="36" rx="2.2" ry="5" transform="rotate(3 2.5 36)" fill="#222"/>
+                            <ellipse cx="4" cy="26" rx="2" ry="4.5" transform="rotate(-14 4 26)" fill="#222"/>
+                            <ellipse cx="8" cy="17" rx="2" ry="4.5" transform="rotate(-32 8 17)" fill="#222"/>
+                            <ellipse cx="15" cy="10.5" rx="1.8" ry="4" transform="rotate(-50 15 10.5)" fill="#222"/>
+                            <ellipse cx="23" cy="6.5" rx="1.8" ry="3.8" transform="rotate(-65 23 6.5)" fill="#222"/>
+                            <!-- Left stem -->
+                            <path d="M10 60 Q6 40 20 8" stroke="#222" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <!-- Right laurel branch — mirror -->
+                            <ellipse cx="82" cy="56" rx="2.2" ry="5" transform="rotate(-30 82 56)" fill="#222"/>
+                            <ellipse cx="84.5" cy="46" rx="2.2" ry="5" transform="rotate(-18 84.5 46)" fill="#222"/>
+                            <ellipse cx="85.5" cy="36" rx="2.2" ry="5" transform="rotate(-3 85.5 36)" fill="#222"/>
+                            <ellipse cx="84" cy="26" rx="2" ry="4.5" transform="rotate(14 84 26)" fill="#222"/>
+                            <ellipse cx="80" cy="17" rx="2" ry="4.5" transform="rotate(32 80 17)" fill="#222"/>
+                            <ellipse cx="73" cy="10.5" rx="1.8" ry="4" transform="rotate(50 73 10.5)" fill="#222"/>
+                            <ellipse cx="65" cy="6.5" rx="1.8" ry="3.8" transform="rotate(65 65 6.5)" fill="#222"/>
+                            <!-- Right stem -->
+                            <path d="M78 60 Q82 40 68 8" stroke="#222" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <!-- Center text — wide clear zone from x≈25 to x≈63 -->
+                            <text x="44" y="37" text-anchor="middle" fill="#222" font-family="'DM Serif Display',Georgia,serif" font-size="13" font-weight="400">Guest</text>
+                            <text x="44" y="53" text-anchor="middle" fill="#222" font-family="'DM Serif Display',Georgia,serif" font-size="13" font-weight="400">favourite</text>
+                            <!-- Bottom stems crossing -->
+                            <line x1="34" y1="64" x2="44" y2="74" stroke="#222" stroke-width="1.4" stroke-linecap="round"/>
+                            <line x1="54" y1="64" x2="44" y2="74" stroke="#222" stroke-width="1.4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="guest-fav-text" data-i18n="guest_fav">
+                        Varias de nuestras propiedades son <strong>Guest Favourites</strong> en Airbnb — un reconocimiento que solo recibe el top 5% por calificaciones, reseñas y confiabilidad.
+                    </div>
+                </div>
+            </div>
+            <div class="fade-up d1">
+                <div class="about-card">
+                    <div class="about-card-border"></div>
+                    <div class="about-card-title">Lo que nos distingue</div>
+                    <div class="about-card-sub">Por qué miles de huéspedes regresan con nosotros.</div>
+                    <div class="promise-item">
+                        <div class="promise-icon pi-copper">🔑</div>
+                        <div class="promise-text">
+                            <strong>Llegas, abres y listo</strong>
+                            <span>Check-in 100% digital. Sin esperas, sin llaves, sin coordinaciones.</span>
+                        </div>
+                    </div>
+                    <div class="promise-item">
+                        <div class="promise-icon pi-slate">💬</div>
+                        <div class="promise-text">
+                            <strong>Atención real, no un bot</strong>
+                            <span>Equipo local que responde rápido y conoce cada propiedad.</span>
+                        </div>
+                    </div>
+                    <div class="promise-item">
+                        <div class="promise-icon pi-sage">✨</div>
+                        <div class="promise-text">
+                            <strong>Limpieza verificada</strong>
+                            <span>Protocolo profesional con evidencia fotográfica antes de cada llegada.</span>
+                        </div>
+                    </div>
+                    <div class="promise-item">
+                        <div class="promise-icon pi-chiapas">📍</div>
+                        <div class="promise-text">
+                            <strong>Ubicaciones con carácter</strong>
+                            <span>La Condesa, Tuxtla, Berriozábal, Coita — cada zona tiene su magia.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience" id="experience">
+    <div class="section-inner">
+        <div class="fade-up">
+            <div class="section-label" data-i18n="exp_label">Tu Experiencia</div>
+            <h2 class="section-title" data-i18n="exp_title">Cada detalle está pensado antes de que&nbsp;llegues</h2>
+            <p class="section-desc" data-i18n="exp_desc">
+                Reservar es solo el primer paso. Lo que sigue es una estancia
+                donde todo funciona — sin sorpresas, sin complicaciones.
+            </p>
+        </div>
+        <div class="exp-grid">
+            <div class="exp-card fade-up d1" data-c="copper">
+                <div class="exp-icon" style="background:rgba(198,123,92,0.1);">📱</div>
+                <h3 data-i18n="exp1_h">Llegada sin fricción</h3>
+                <p>
+                    Antes de llegar recibes un link con todo: instrucciones de acceso,
+                    código de entrada, WiFi y guía del barrio. Llegas directo a disfrutar.
+                </p>
+                <a href="https://guestapp.marimbashome.com" class="exp-link">
+                    Conocer el check-in
+                    <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="exp-card fade-up d2" data-c="slate">
+                <div class="exp-icon" style="background:rgba(74,111,165,0.1);">🍷</div>
+                <h3 data-i18n="exp2_h">Minibar en cada espacio</h3>
+                <p>
+                    Cada propiedad tiene un minibar con snacks, bebidas y productos locales.
+                    Toma lo que quieras y paga fácil desde tu celular — sin efectivo, sin complicaciones.
+                </p>
+                <a href="https://minibar.marimbashome.com" class="exp-link">
+                    Ver el menú
+                    <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="exp-card fade-up d3" data-c="sage">
+                <div class="exp-icon" style="background:rgba(150,206,180,0.15);">🛎️</div>
+                <h3 data-i18n="exp3_h">Soporte cercano</h3>
+                <p>
+                    ¿Toalla extra? ¿Recomendaciones? ¿Algo inesperado?
+                    Nuestro equipo está a un mensaje. Y sí, somos personas reales.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonial fade-up">
+    <div class="testimonial-inner">
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+        <div class="testimonial-slides" id="testimonialSlides">
+            <div class="testimonial-slide active">
+                <div class="testimonial-quote" data-i18n="t1_quote">El check-in fue increíblemente fácil, el departamento estaba impecable y la ubicación en Condesa es perfecta. Ya reservamos para volver en diciembre.</div>
+                <div class="testimonial-author" data-i18n="t1_author">— Huésped en Condesa. 4, noviembre 2025</div>
+            </div>
+            <div class="testimonial-slide">
+                <div class="testimonial-quote" data-i18n="t2_quote">Nos encantó la casa en Tuxtla. Llegamos tarde y no hubo ningún problema con el acceso. Todo limpio, bien equipado, y el equipo siempre atento por WhatsApp.</div>
+                <div class="testimonial-author" data-i18n="t2_author">— Huésped en Tuxtla. Sahily, enero 2026</div>
+            </div>
+            <div class="testimonial-slide">
+                <div class="testimonial-quote" data-i18n="t3_quote">Tercer viaje con Marimbas y siempre es la misma calidad. El minibar es un detalle increíble. Se nota que cuidan cada propiedad como si fuera su casa.</div>
+                <div class="testimonial-author" data-i18n="t3_author">— Huésped recurrente, marzo 2026</div>
+            </div>
+        </div>
+        <div class="testimonial-dots">
+            <button class="testimonial-dot active" onclick="goSlide(0)"></button>
+            <button class="testimonial-dot" onclick="goSlide(1)"></button>
+            <button class="testimonial-dot" onclick="goSlide(2)"></button>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products" id="tech">
+    <div class="section-inner">
+        <div class="products-intro fade-up">
+            <div>
+                <div class="section-label">Nuestros Productos</div>
+                <h2 class="section-title">Herramientas que usamos todos los días — ahora disponibles para&nbsp;ti</h2>
+            </div>
+            <div class="products-intro-right">
+                Construimos software para operar nuestras propias propiedades. Cada herramienta nació de un problema real y está probada con <strong>miles de estancias</strong>. Si administras propiedades, puedes usarlas hoy.
+            </div>
+        </div>
+        <div class="prod-grid">
+            <div class="prod-card fade-up d1">
+                <div class="prod-top">
+                    <div class="prod-icon" style="background:rgba(198,123,92,0.15);">📱</div>
+                    <span class="prod-badge badge-live">Disponible</span>
+                </div>
+                <h3>Guest App</h3>
+                <div class="prod-for">Para huéspedes · Plug & Play</div>
+                <p>Check-in digital, verificación de identidad, instrucciones de llegada y acceso a servicios. Tu huésped llega, abre y listo.</p>
+                <div class="prod-tags">
+                    <span class="prod-tag">Check-in digital</span>
+                    <span class="prod-tag">Verificación ID</span>
+                    <span class="prod-tag">Guía de llegada</span>
+                    <span class="prod-tag">Multi-idioma</span>
+                </div>
+                <a href="https://guestapp.marimbashome.com" class="prod-cta btn-white">
+                    Ver Demo
+                    <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="prod-card fade-up d2">
+                <div class="prod-top">
+                    <div class="prod-icon" style="background:rgba(74,111,165,0.15);">🍷</div>
+                    <span class="prod-badge badge-live">Disponible</span>
+                </div>
+                <h3>Minibar Digital</h3>
+                <div class="prod-for">Para huéspedes · Genera ingreso extra</div>
+                <p>Catálogo de productos por propiedad. El huésped pide desde su celular, tú generas revenue adicional sin inventario fijo.</p>
+                <div class="prod-tags">
+                    <span class="prod-tag">Catálogo personalizable</span>
+                    <span class="prod-tag">Pedidos en tiempo real</span>
+                    <span class="prod-tag">Multi-pago</span>
+                </div>
+                <a href="https://minibar.marimbashome.com" class="prod-cta btn-white">
+                    Ver Demo
+                    <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="prod-card fade-up d3">
+                <div class="prod-top">
+                    <div class="prod-icon" style="background:rgba(150,206,180,0.15);">📊</div>
+                    <span class="prod-badge badge-soon">Próximamente</span>
+                </div>
+                <h3>Admin Dashboard</h3>
+                <div class="prod-for">Para administradores · Control total</div>
+                <p>Revenue, ocupación y métricas en un solo lugar. Ve cómo rinden tus propiedades sin abrir cinco plataformas distintas.</p>
+                <div class="prod-tags">
+                    <span class="prod-tag">Revenue en tiempo real</span>
+                    <span class="prod-tag">Reportes financieros</span>
+                    <span class="prod-tag">Multi-canal</span>
+                </div>
+                <a href="mailto:info@marimbashome.com?subject=Admin%20Dashboard" class="prod-cta btn-outline-light">Solicitar Acceso</a>
+            </div>
+            <div class="prod-card fade-up d4">
+                <div class="prod-top">
+                    <div class="prod-icon" style="background:rgba(61,107,53,0.15);">🧹</div>
+                    <span class="prod-badge badge-soon">Próximamente</span>
+                </div>
+                <h3>CleanBot</h3>
+                <div class="prod-for">Para operaciones · Automatización</div>
+                <p>Coordina limpieza automáticamente con cada check-out vía WhatsApp. Asigna turnos, notifica y confirma con foto.</p>
+                <div class="prod-tags">
+                    <span class="prod-tag">WhatsApp nativo</span>
+                    <span class="prod-tag">Asignación automática</span>
+                    <span class="prod-tag">Multi-propiedad</span>
+                </div>
+                <a href="mailto:info@marimbashome.com?subject=CleanBot" class="prod-cta btn-outline-light">Solicitar Acceso</a>
+            </div>
+        </div>
+        <div class="products-bottom fade-up">
+            <p><strong>¿Administras propiedades?</strong> Cada producto funciona de forma independiente — activa solo lo que necesites.</p>
+            <a href="mailto:info@marimbashome.com?subject=Marimbas%20Products" class="btn btn-white">
+                Contactar al Equipo
+                <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- PROPERTIES -->
+<section class="section properties" id="properties">
+    <div class="section-inner">
+        <div class="fade-up">
+            <div class="section-label">Nuestros Destinos</div>
+            <h2 class="section-title">Dos regiones, un mismo estándar</h2>
+            <p class="section-desc">
+                Ya sea que busques la energía de la ciudad o la calma del sureste,
+                tenemos un espacio listo para ti.
+            </p>
+        </div>
+        <div class="prop-grid">
+            <div class="prop-zone fade-up d1">
+                <div class="prop-zone-name">Ciudad de México</div>
+                <div class="prop-zone-desc">
+                    En el corazón de La Condesa — cafés, parques, galerías y vida nocturna
+                    a pie de puerta. Departamentos con personalidad en uno de los barrios
+                    más deseados de CDMX.
+                </div>
+                <div class="prop-highlights">
+                    <span class="prop-tag">La Condesa</span>
+                    <span class="prop-tag">Lofts & Studios</span>
+                    <span class="prop-tag">Pet Friendly</span>
+                    <span class="prop-tag">WiFi Alta Velocidad</span>
+                </div>
+                <div class="prop-stats">
+                    <div class="prop-stat"><div class="prop-stat-num">4+</div><div class="prop-stat-label">Espacios</div></div>
+                    <div class="prop-stat"><div class="prop-stat-num">2–4</div><div class="prop-stat-label">Huéspedes</div></div>
+                    <div class="prop-stat"><div class="prop-stat-num">$800+</div><div class="prop-stat-label">Por noche</div></div>
+                </div>
+            </div>
+            <div class="prop-zone fade-up d2">
+                <div class="prop-zone-name">Chiapas</div>
+                <div class="prop-zone-desc">
+                    Casas con jardín, aires frescos y el ritmo pausado del sureste mexicano.
+                    Ideales para familias, viajes largos, o para desconectar del ruido.
+                </div>
+                <div class="prop-highlights">
+                    <span class="prop-tag">Tuxtla Gutiérrez</span>
+                    <span class="prop-tag">Berriozábal</span>
+                    <span class="prop-tag">Coita</span>
+                    <span class="prop-tag">Casas Completas</span>
+                    <span class="prop-tag">Jardín & Terraza</span>
+                </div>
+                <div class="prop-stats">
+                    <div class="prop-stat"><div class="prop-stat-num">20+</div><div class="prop-stat-label">Espacios</div></div>
+                    <div class="prop-stat"><div class="prop-stat-num">2–8</div><div class="prop-stat-label">Huéspedes</div></div>
+                    <div class="prop-stat"><div class="prop-stat-num">$210+</div><div class="prop-stat-label">Por noche</div></div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top: 48px;" class="fade-up">
+            <a href="https://book.marimbashome.com" class="btn btn-copper" style="font-size:16px; padding:16px 40px;">
+                Explorar Todos los Espacios
+                <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- OWNERS -->
+<section class="owners" id="owners">
+    <div class="owners-inner">
+        <div class="owners-grid fade-up">
+            <div>
+                <div class="section-label" style="color:var(--chiapas);">Para Propietarios</div>
+                <h2>Tu propiedad genera, nosotros la operamos</h2>
+                <p class="section-desc" style="margin-bottom:32px;">
+                    Si tienes un departamento o casa que quieres rentar por temporada,
+                    nos encargamos de todo. Tú solo recibes tu estado de cuenta.
+                </p>
+                <a href="https://propietarios.marimbashome.com" class="btn btn-slate" data-i18n="own_btn">
+                    Platiquemos
+                    <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div>
+                <div class="owner-benefit">
+                    <div class="owner-check">✓</div>
+                    <div class="owner-text"><strong>Fotografía y listings profesionales</strong>Tu propiedad presentada en Airbnb, Booking y canal directo con fotos que venden.</div>
+                </div>
+                <div class="owner-benefit">
+                    <div class="owner-check">✓</div>
+                    <div class="owner-text"><strong>Precios que maximizan tu ingreso</strong>Tarifas ajustadas automáticamente según demanda, temporada y competencia local.</div>
+                </div>
+                <div class="owner-benefit">
+                    <div class="owner-check">✓</div>
+                    <div class="owner-text"><strong>Operación completa sin que muevas un dedo</strong>Limpieza, mantenimiento, atención a huéspedes, y resolución de incidentes.</div>
+                </div>
+                <div class="owner-benefit">
+                    <div class="owner-check">✓</div>
+                    <div class="owner-text"><strong>Transparencia total con tecnología propia</strong>Dashboard en tiempo real con tu ocupación, ingresos y gastos. Sin sorpresas.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">
+                <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+                    <path d="M18 3L4 14v18h28V14L18 3z" stroke="#4A6FA5" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                    <ellipse cx="18" cy="22" rx="5" ry="7" fill="#C67B5C"/>
+                </svg>
+                <span class="footer-brand-text">Marimbas Home</span>
+            </div>
+            <div class="footer-sub">Estancias en CDMX y Chiapas · Desde 2015</div>
+        </div>
+        <ul class="footer-links">
+            <li><a href="https://book.marimbashome.com">Reservar</a></li>
+            <li><a href="https://guestapp.marimbashome.com">Check-in</a></li>
+            <li><a href="https://minibar.marimbashome.com">Minibar</a></li>
+            <li><a href="mailto:info@marimbashome.com">Contacto</a></li>
+            <li>
+                <a href="https://www.instagram.com/marimbashome" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:6px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    @marimbashome
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer-bottom">© 2015–2026 Marimbas Home. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+// Intersection Observer with stagger
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Testimonial carousel
+let currentSlide = 0;
+const slides = document.querySelectorAll('.testimonial-slide');
+const dots = document.querySelectorAll('.testimonial-dot');
+function goSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+setInterval(() => goSlide((currentSlide + 1) % slides.length), 6000);
+
+// i18n
+let lang = 'es';
+const i18n = {
+    en: {
+        // Nav
+        nav_about: 'About', nav_exp: 'Experience', nav_prod: 'Products',
+        nav_dest: 'Destinations', nav_owners: 'Owners', nav_cta: 'Book Now',
+        // Hero
+        hero_badge: 'Over 5,000 stays since 2015',
+        hero_h1: 'Your next <em>home</em> in Mexico is&nbsp;waiting',
+        hero_sub: 'Spaces with character in Mexico City and Chiapas. Frictionless check-in, real people, and everything ready so you feel at home from the moment you arrive.',
+        hero_btn1: 'Check Availability', hero_btn2: 'See Destinations',
+        trust1_num: '5,000+', trust1_label: 'Stays completed',
+        trust2_num: '10', trust2_label: 'Years of experience',
+        trust3_num: '28', trust3_label: 'Spaces available',
+        // Channels
+        channels_label: 'Find us on',
+        // About
+        about_label: 'Who We Are',
+        about_title: 'Hospitality with the rhythm of&nbsp;the&nbsp;marimba',
+        about_p1: 'Marimbas Home was born in 2015 with a simple idea: that every guest should feel truly welcome. We started with one apartment in La Condesa and today we host travelers in two of Mexico\'s most fascinating regions.',
+        about_p2: 'Our name comes from the Chiapan marimba — the instrument that fills any space with warmth. That\'s exactly what we aim for: a place that feels like home.',
+        guest_fav: 'Several of our properties are <strong>Guest Favourites</strong> on Airbnb — a recognition given only to the top 5% for ratings, reviews, and reliability.',
+        card_title: 'What sets us apart', card_sub: 'Why thousands of guests come back to us.',
+        p1_title: 'Arrive, open, done', p1_text: '100% digital check-in. No waiting, no keys, no hassle.',
+        p2_title: 'Real people, not a bot', p2_text: 'Local team that responds fast and knows every property.',
+        p3_title: 'Verified cleanliness', p3_text: 'Professional protocol with photo evidence before every arrival.',
+        p4_title: 'Locations with character', p4_text: 'La Condesa, Tuxtla, Berriozábal, Coita — each with its own magic.',
+        // Experience
+        exp_label: 'Your Experience',
+        exp_title: 'Every detail is planned before you&nbsp;arrive',
+        exp_desc: 'Booking is just the first step. What follows is a stay where everything works — no surprises, no hassles.',
+        exp1_h: 'Frictionless arrival', exp1_p: 'Before arriving you get a link with everything: access instructions, entry code, WiFi, and a neighborhood guide. You go straight to enjoying.',
+        exp1_link: 'Learn about check-in',
+        exp2_h: 'Minibar in every space', exp2_p: 'Every property has a minibar with snacks, drinks and local products. Take what you want and pay easily from your phone — no cash, no hassle.',
+        exp2_link: 'See the menu',
+        exp3_h: 'Close support', exp3_p: 'Extra towel? Recommendations? Something unexpected? Our team is a message away. And yes, we\'re real people.',
+        // Testimonials
+        t1_quote: 'The check-in was incredibly easy, the apartment was spotless and the Condesa location is perfect. We already booked to come back in December.',
+        t1_author: '— Guest at Condesa. 4, November 2025',
+        t2_quote: 'We loved the house in Tuxtla. We arrived late and had no issues with access. Everything clean, well-equipped, and the team always responsive on WhatsApp.',
+        t2_author: '— Guest at Tuxtla. Sahily, January 2026',
+        t3_quote: 'Third trip with Marimbas and it\'s always the same quality. The minibar is an amazing touch. You can tell they care for every property like it\'s their own.',
+        t3_author: '— Returning guest, March 2026',
+        // Products
+        prod_label: 'Our Products',
+        prod_title: 'Tools we use every day — now available for&nbsp;you',
+        prod_intro: 'We build software to run our own properties. Every tool was born from a real problem and tested with <strong>thousands of stays</strong>. If you manage properties, you can use them today.',
+        prod_bottom: '<strong>Manage properties?</strong> Each product works independently — activate only what you need.',
+        prod_bottom_btn: 'Contact the Team',
+        // Properties
+        dest_label: 'Our Destinations', dest_title: 'Two regions, one standard',
+        dest_desc: 'Whether you\'re looking for city energy or the calm of the southeast, we have a space ready for you.',
+        cdmx_name: 'Mexico City', cdmx_desc: 'In the heart of La Condesa — cafés, parks, galleries and nightlife at your doorstep. Apartments with personality in one of CDMX\'s most desired neighborhoods.',
+        chiapas_name: 'Chiapas', chiapas_desc: 'Houses with gardens, fresh air and the slow rhythm of southeastern Mexico. Ideal for families, long stays, or disconnecting from the noise.',
+        dest_btn: 'Explore All Spaces',
+        // Owners
+        own_label: 'For Property Owners', own_title: 'Your property earns, we operate it',
+        own_desc: 'If you have an apartment or house you want to rent short-term, we handle everything. You just receive your monthly statement.',
+        own_btn: 'Learn More',
+        own1_title: 'Professional photography and listings', own1_text: 'Your property listed on Airbnb, Booking and direct channels with photos that sell.',
+        own2_title: 'Prices that maximize your income', own2_text: 'Rates automatically adjusted by demand, seasonality, and local competition.',
+        own3_title: 'Full operation without lifting a finger', own3_text: 'Cleaning, maintenance, guest support, and incident resolution.',
+        own4_title: 'Total transparency with proprietary tech', own4_text: 'Real-time dashboard with your occupancy, income, and expenses. No surprises.',
+    }
+};
+// Store original ES content
+const esContent = {};
+document.querySelectorAll('[data-i18n]').forEach(el => {
+    esContent[el.dataset.i18n] = el.innerHTML;
+});
+
+function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    document.getElementById('langBtn').textContent = lang === 'es' ? 'EN' : 'ES';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        el.innerHTML = lang === 'en' ? (i18n.en[key] || esContent[key]) : esContent[key];
+    });
+}
+
+// Mobile nav
+function toggleNav() {
+    const l = document.querySelector('.nav-links');
+    if (l.style.display === 'flex') { l.style.display = ''; return; }
+    Object.assign(l.style, {
+        display:'flex', flexDirection:'column', position:'absolute',
+        top:'72px', left:'0', right:'0', background:'rgba(250,247,242,0.98)',
+        padding:'20px 24px', gap:'20px', backdropFilter:'blur(20px)',
+        borderBottom:'1px solid rgba(0,0,0,0.06)'
+    });
+}
+</script>
+</body>
+</html>
