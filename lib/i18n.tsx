@@ -184,8 +184,21 @@ const translations: Record<string, Record<Lang, string>> = {
     es: 'Dashboard en tiempo real con tu ocupación, ingresos y gastos. Sin sorpresas.',
     en: 'Real-time dashboard with your occupancy, income, and expenses. No surprises.',
   },
+  // Properties - tags & stats
+  tag_pet_friendly: { es: 'Pet Friendly', en: 'Pet Friendly' },
+  tag_wifi: { es: 'WiFi Alta Velocidad', en: 'High-Speed WiFi' },
+  tag_casas: { es: 'Casas Completas', en: 'Full Houses' },
+  tag_jardin: { es: 'Jardín & Terraza', en: 'Garden & Terrace' },
+  stat_spaces: { es: 'Espacios', en: 'Spaces' },
+  stat_guests: { es: 'Huéspedes', en: 'Guests' },
+  stat_per_night: { es: 'Por noche', en: 'Per night' },
   // Footer
   footer_sub: { es: 'Estancias en CDMX y Chiapas · Desde 2015', en: 'Stays in CDMX and Chiapas · Since 2015' },
+  footer_book: { es: 'Reservar', en: 'Book' },
+  footer_checkin: { es: 'Check-in', en: 'Check-in' },
+  footer_minibar: { es: 'Minibar', en: 'Minibar' },
+  footer_contact: { es: 'Contacto', en: 'Contact' },
+  footer_copy: { es: '© 2015–2026 Marimbas Home. Todos los derechos reservados.', en: '© 2015–2026 Marimbas Home. All rights reserved.' },
 }
 
 interface I18nContextType {

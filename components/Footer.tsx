@@ -15,13 +15,13 @@ export default function Footer() {
           <div className="footer-sub">{t('footer_sub')}</div>
         </div>
         <ul className="footer-links">
-          <li><a href="https://book.marimbashome.com">Reservar</a></li>
-          <li><a href="https://guestapp.marimbashome.com">Check-in</a></li>
-          <li><a href="https://minibar.marimbashome.com">Minibar</a></li>
-          <li><a href="mailto:enrique.miceli@gmail.com">Contacto</a></li>
+          <li><a href="https://book.marimbashome.com">{t('footer_book')}</a></li>
+          <li><a href="https://guestapp.marimbashome.com">{t('footer_checkin')}</a></li>
+          <li><a href="https://minibar.marimbashome.com">{t('footer_minibar')}</a></li>
+          <li><a href="mailto:reservas@marimbashome.com">{t('footer_contact')}</a></li>
         </ul>
       </div>
-      <div className="footer-bottom">© 2015–2026 Marimbas Home. Todos los derechos reservados.</div>
+      <div className="footer-bottom">{t('footer_copy')}</div>
     </footer>
   )
 }

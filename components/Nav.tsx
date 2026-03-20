@@ -32,7 +32,7 @@ export default function Nav() {
   return (
     <nav className={`nav${scrolled ? ' scrolled' : ''}${mobileOpen ? ' mobile-open' : ''}`}>
       <div className="nav-inner">
-        <a href="#" className="nav-logo">
+        <a href="/" className="nav-logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); }}>
           <LogoIcon />
           <span className="nav-logo-text">Marimbas Home</span>
         </a>

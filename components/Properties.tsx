@@ -21,13 +21,13 @@ export default function Properties() {
               <div className="prop-highlights">
                 <span className="prop-tag">La Condesa</span>
                 <span className="prop-tag">Lofts &amp; Studios</span>
-                <span className="prop-tag">Pet Friendly</span>
-                <span className="prop-tag">WiFi Alta Velocidad</span>
+                <span className="prop-tag">{t('tag_pet_friendly')}</span>
+                <span className="prop-tag">{t('tag_wifi')}</span>
               </div>
               <div className="prop-stats">
-                <div className="prop-stat"><div className="prop-stat-num">4+</div><div className="prop-stat-label">Espacios</div></div>
-                <div className="prop-stat"><div className="prop-stat-num">2–4</div><div className="prop-stat-label">Huéspedes</div></div>
-                <div className="prop-stat"><div className="prop-stat-num">$800+</div><div className="prop-stat-label">Por noche</div></div>
+                <div className="prop-stat"><div className="prop-stat-num">4+</div><div className="prop-stat-label">{t('stat_spaces')}</div></div>
+                <div className="prop-stat"><div className="prop-stat-num">2–4</div><div className="prop-stat-label">{t('stat_guests')}</div></div>
+                <div className="prop-stat"><div className="prop-stat-num">$800+</div><div className="prop-stat-label">{t('stat_per_night')}</div></div>
               </div>
             </div>
           </FadeUp>
@@ -39,13 +39,13 @@ export default function Properties() {
                 <span className="prop-tag">Tuxtla Gutiérrez</span>
                 <span className="prop-tag">Berriozábal</span>
                 <span className="prop-tag">Coita</span>
-                <span className="prop-tag">Casas Completas</span>
-                <span className="prop-tag">Jardín &amp; Terraza</span>
+                <span className="prop-tag">{t('tag_casas')}</span>
+                <span className="prop-tag">{t('tag_jardin')}</span>
               </div>
               <div className="prop-stats">
-                <div className="prop-stat"><div className="prop-stat-num">20+</div><div className="prop-stat-label">Espacios</div></div>
-                <div className="prop-stat"><div className="prop-stat-num">2–8</div><div className="prop-stat-label">Huéspedes</div></div>
-                <div className="prop-stat"><div className="prop-stat-num">$210+</div><div className="prop-stat-label">Por noche</div></div>
+                <div className="prop-stat"><div className="prop-stat-num">20+</div><div className="prop-stat-label">{t('stat_spaces')}</div></div>
+                <div className="prop-stat"><div className="prop-stat-num">2–8</div><div className="prop-stat-label">{t('stat_guests')}</div></div>
+                <div className="prop-stat"><div className="prop-stat-num">$210+</div><div className="prop-stat-label">{t('stat_per_night')}</div></div>
               </div>
             </div>
           </FadeUp>
