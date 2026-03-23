@@ -2,7 +2,18 @@
   "rewrites": [
     {
       "source": "/blog/:path*",
-      "destination": "https://marimbas-blog-marimbashome.vercel.app/blog/:path*"
+      "destination": "https://marimbas-blog.vercel.app/blog/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/blog/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "all"
+        }
+      ]
     }
   ]
 }
