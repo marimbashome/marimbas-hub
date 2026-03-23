@@ -16,13 +16,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Marimbas Home — Tu Hogar en México',
+  title: 'Marimbas Home \u2014 Tu Hogar en M\u00e9xico',
   description:
-    'Departamentos y casas para tu próxima estancia en Ciudad de México y Chiapas. Más de 5,000 huéspedes confían en Marimbas Home desde 2015.',
+    'Departamentos y casas para tu pr\u00f3xima estancia en Ciudad de M\u00e9xico y Chiapas. M\u00e1s de 5,000 hu\u00e9spedes conf\u00edan en Marimbas Home desde 2015.',
   openGraph: {
-    title: 'Marimbas Home — Tu Hogar en México',
+    title: 'Marimbas Home \u2014 Tu Hogar en M\u00e9xico',
     description:
-      'Espacios con carácter en CDMX y Chiapas. Check-in digital, atención personal, más de 10 años de experiencia.',
+      'Espacios con car\u00e1cter en CDMX y Chiapas. Check-in digital, atenci\u00f3n personal, m\u00e1s de 10 a\u00f1os de experiencia.',
     type: 'website',
     url: 'https://marimbashome.com',
   },
