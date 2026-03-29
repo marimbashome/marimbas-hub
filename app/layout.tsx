@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: 'Marimbas Home \u2014 Tu Hogar en M\u00e9xico',
   description:
     'Departamentos y casas para tu pr\u00f3xima estancia en Ciudad de M\u00e9xico y Chiapas. M\u00e1s de 5,000 hu\u00e9spedes conf\u00edan en Marimbas Home desde 2015.',
+  verification: {
+    google: 'google4a0dc3d8d43a19b2',
+  },
   openGraph: {
     title: 'Marimbas Home \u2014 Tu Hogar en M\u00e9xico',
     description:
