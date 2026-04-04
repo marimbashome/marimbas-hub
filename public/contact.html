@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacta a Marimbas Home — hospedajes auténticos en CDMX y Chiapas. WhatsApp, email, teléfono disponibles.">
+  <meta name="google-adsense-account" content="ca-pub-5779958677522085">
+  <title>Contacto — Marimbas Home</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --slate: #3D6B35;
+      --slate-dark: #1B3A1A;
+      --copper: #C67B5C;
+      --copper-dark: #A8624A;
+      --gold: #FFD700;
+      --chiapas: #3D6B35;
+      --sage: #96CEB4;
+      --teal: #4ECDC4;
+      --coral: #e17055;
+      --linen: #F5F0E8;
+      --sand: #E8DFD1;
+      --cream: #FAF7F2;
+      --charcoal: #2C2C2C;
+      --charcoal-light: #4A4A4A;
+      --muted: #8B8B8B;
+      --white: #FFFFFF;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: transparent;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-logo svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--slate);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .lang-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      transition: color 0.3s;
+    }
+
+    .lang-toggle:hover {
+      color: var(--slate);
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-slate {
+      background: var(--slate);
+      color: var(--white);
+    }
+
+    .btn-slate:hover {
+      background: var(--slate-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(61, 107, 53, 0.3);
+    }
+
+    .btn-copper {
+      background: var(--copper);
+      color: var(--white);
+    }
+
+    .btn-copper:hover {
+      background: var(--copper-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(198, 123, 92, 0.3);
+    }
+
+    .btn-link {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+      padding: 0.65rem 1.4rem;
+    }
+
+    .btn-link:hover {
+      background: var(--white);
+      color: var(--slate);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--slate-dark);
+      color: var(--white);
+      padding: 8rem 2rem 4rem;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--sage);
+      margin-bottom: 2rem;
+    }
+
+    /* Content Sections */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: var(--charcoal);
+    }
+
+    /* Contact Cards Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .contact-card {
+      background: var(--linen);
+      padding: 2.5rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--slate);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    }
+
+    .contact-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--slate);
+    }
+
+    .contact-card .contact-info {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      word-break: break-all;
+    }
+
+    .contact-card a {
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .contact-card p {
+      color: var(--charcoal-light);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Locations Section */
+    .locations {
+      background: var(--cream);
+      padding: 4rem 0;
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .location-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-left: 4px solid var(--copper);
+    }
+
+    .location-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+
+    .location-card p {
+      color: var(--charcoal-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Info Section */
+    .info-section {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--sand);
+      margin: 2rem 0;
+    }
+
+    .info-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+
+    .info-section ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+
+    .info-section li {
+      color: var(--charcoal-light);
+      margin-bottom: 0.7rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .info-section li:before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: var(--slate);
+    }
+
+    /* Response Time Banner */
+    .response-banner {
+      background: var(--slate);
+      color: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .response-banner p {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .response-banner .time {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .footer-brand svg {
+      width: 32px;
+      height: 32px;
+      margin-top: 4px;
+    }
+
+    .footer-brand div h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand .tagline {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .footer-links h4 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--sage);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        padding: 5rem 1rem 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-section {
+        padding: 2rem;
+      }
+
+      section {
+        padding: 2rem 0;
+      }
+    }
+
+    /* Language content */
+    .en { display: none; }
+    body.en .es { display: none; }
+    body.en .en { display: inline; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 12l9-9 9 9M3 12v7a2 2 0 002 2h14a2 2 0 002-2v-7M9 12v7h6v-7"/>
+      <ellipse cx="12" cy="17" rx="2" ry="1" fill="currentColor"/>
+    </svg>
+    <span class="es">Marimbas Home</span>
+    <span class="en">Marimbas Home</span>
+  </a>
+  
+  <ul class="nav-links">
+    <li><a href="index.html" class="es">Inicio</a><a href="index.html" class="en" style="display:none">Home</a></li>
+    <li><a href="about.html" class="es">Acerca de</a><a href="about.html" class="en" style="display:none">About</a></li>
+    <li><a href="contact.html" class="es">Contacto</a><a href="contact.html" class="en" style="display:none">Contact</a></li>
+    <li><a href="privacy.html" class="es">Privacidad</a><a href="privacy.html" class="en" style="display:none">Privacy</a></li>
+  </ul>
+  
+  <div class="nav-right">
+    <button class="lang-toggle" onclick="toggleLanguage()">
+      <span class="es">EN</span>
+      <span class="en" style="display:none">ES</span>
+    </button>
+    <a href="https://book.marimbashome.com" class="btn btn-slate">
+      <span class="es">Reservar</span>
+      <span class="en" style="display:none">Book</span>
+    </a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <h1 class="es">Contacto</h1>
+    <h1 class="en" style="display:none">Contact Us</h1>
+    <p class="subtitle es">Estamos aquí para ayudarte</p>
+    <p class="subtitle en" style="display:none">We're here to help</p>
+  </div>
+</div>
+
+<section class="container">
+  <h2 class="section-title es">Ponte en contacto</h2>
+  <h2 class="section-title en" style="display:none">Get In Touch</h2>
+  
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3 class="es">WhatsApp</h3>
+      <h3 class="en" style="display:none">WhatsApp</h3>
+      <div class="contact-info">+52 55 1837 7126</div>
+      <p class="es">Respuesta rápida, disponible 24/7</p>
+      <p class="en" style="display:none">Quick responses, available 24/7</p>
+      <a href="https://wa.me/5551837126" class="btn btn-slate" target="_blank">
+        <span class="es">Enviar mensaje</span>
+        <span class="en" style="display:none">Send message</span>
+      </a>
+    </div>
+    
+    <div class="contact-card">
+      <h3 class="es">Email</h3>
+      <h3 class="en" style="display:none">Email</h3>
+      <div class="contact-info">reservas@marimbashome.com</div>
+      <p class="es">Para consultas de reservas</p>
+      <p class="en" style="display:none">For booking inquiries</p>
+      <a href="mailto:reservas@marimbashome.com" class="btn btn-slate">
+        <span class="es">Enviar email</span>
+        <span class="en" style="display:none">Send email</span>
+      </a>
+    </div>
+    
+    <div class="contact-card">
+      <h3 class="es">Teléfono</h3>
+      <h3 class="en" style="display:none">Phone</h3>
+      <div class="contact-info">+52 961 100 0000</div>
+      <p class="es">Lun–Sáb, 9am–8pm CDMX</p>
+      <p class="en" style="display:none">Mon–Sat, 9am–8pm CDMX</p>
+      <a href="tel:+529611000000" class="btn btn-slate">
+        <span class="es">Llamar ahora</span>
+        <span class="en" style="display:none">Call now</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="response-banner">
+  <p class="es">Tiempo de respuesta promedio</p>
+  <p class="en" style="display:none">Average response time</p>
+  <div class="time">24–48 <span class="es">horas</span><span class="en" style="display:none">hours</span></div>
+</section>
+
+<section class="locations">
+  <div class="container">
+    <h2 class="section-title es">Nuestras ubicaciones</h2>
+    <h2 class="section-title en" style="display:none">Our Locations</h2>
+    
+    <div class="locations-grid">
+      <div class="location-card">
+        <h3 class="es">CDMX</h3>
+        <h3 class="en" style="display:none">CDMX</h3>
+        <p><strong class="es">Dirección:</strong><strong class="en" style="display:none">Address:</strong></p>
+        <p>Atlixco 173<br>Condesa, Cuauhtémoc<br>06140, Ciudad de México</p>
+        <p class="es"><strong>Zona:</strong> Condesa — el corazón bohemio de la ciudad</p>
+        <p class="en" style="display:none"><strong>Area:</strong> Condesa — the bohemian heart of the city</p>
+      </div>
+      
+      <div class="location-card">
+        <h3 class="es">Chiapas</h3>
+        <h3 class="en" style="display:none">Chiapas</h3>
+        <p><strong class="es">Ubicaciones:</strong><strong class="en" style="display:none">Locations:</strong></p>
+        <p class="es">Tuxtla Gutiérrez<br>Coita<br>Berriozábal</p>
+        <p class="en" style="display:none">Tuxtla Gutiérrez<br>Coita<br>Berriozábal</p>
+        <p class="es"><strong>Zona:</strong> Puertas de entrada a la naturaleza y cultura de Chiapas</p>
+        <p class="en" style="display:none"><strong>Area:</strong> Gateways to Chiapas' nature and culture</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="info-section">
+    <h3 class="es">¿Por qué contactarnos?</h3>
+    <h3 class="en" style="display:none">Why contact us?</h3>
+    
+    <ul>
+      <li class="es"><strong>Información incorrecta</strong> — Si encuentras datos desactualizados en nuestro sitio o en Airbnb, queremos saberlo para corregirlo inmediatamente.</li>
+      <li class="en" style="display:none"><strong>Incorrect Information</strong> — If you find outdated data on our site or Airbnb, we want to know so we can fix it immediately.</li>
+      
+      <li class="es"><strong>Sugerencias y feedback</strong> — Valoramos tu opinión. Si tienes sugerencias para mejorar tu experiencia, nos encantaría escucharte.</li>
+      <li class="en" style="display:none"><strong>Suggestions and Feedback</strong> — We value your input. If you have suggestions to improve your experience, we'd love to hear them.</li>
+      
+      <li class="es"><strong>Colaboraciones</strong> — ¿Interesado en trabajar con nosotros? Estaremos encantados de explorar oportunidades de colaboración.</li>
+      <li class="en" style="display:none"><strong>Collaborations</strong> — Interested in working with us? We'd be happy to explore collaboration opportunities.</li>
+      
+      <li class="es"><strong>Publicidad y asociaciones</strong> — Si deseas asociarte con Marimbas Home o conversar sobre oportunidades de marketing, ponte en contacto.</li>
+      <li class="en" style="display:none"><strong>Advertising and Partnerships</strong> — If you'd like to partner with Marimbas Home or discuss marketing opportunities, get in touch.</li>
+      
+      <li class="es"><strong>Problemas o emergencias durante tu estancia</strong> — Si necesitas ayuda inmediata, llama o envía WhatsApp. Nuestro equipo está disponible 24/7.</li>
+      <li class="en" style="display:none"><strong>Issues or Emergencies During Your Stay</strong> — If you need immediate assistance, call or WhatsApp us. Our team is available 24/7.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="container">
+  <div class="cta-section" style="background: var(--copper); color: var(--white); padding: 3rem 2rem; border-radius: var(--radius-lg); text-align: center;">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem;" class="es">¿Listo para tu próxima estancia?</h2>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem;" class="en" style="display:none">Ready for your next stay?</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+      <span class="es">Reserva ahora en book.marimbashome.com</span>
+      <span class="en" style="display:none">Book now at book.marimbashome.com</span>
+    </p>
+    <a href="https://book.marimbashome.com" class="btn btn-link">
+      <span class="es">Explorar propiedades</span>
+      <span class="en" style="display:none">Explore properties</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12l9-9 9 9M3 12v7a2 2 0 002 2h14a2 2 0 002-2v-7M9 12v7h6v-7"/>
+        <ellipse cx="12" cy="17" rx="2" ry="1" fill="currentColor"/>
+      </svg>
+      <div>
+        <h3>Marimbas Home</h3>
+        <p class="tagline es">Estancias en CDMX y Chiapas · Desde 2015</p>
+        <p class="tagline en" style="display:none">Stays in CDMX and Chiapas · Since 2015</p>
+      </div>
+    </div>
+    
+    <div class="footer-links">
+      <h4 class="es">Explorar</h4>
+      <h4 class="en" style="display:none">Explore</h4>
+      <ul>
+        <li><a href="https://book.marimbashome.com" class="es">Reservar</a><a href="https://book.marimbashome.com" class="en" style="display:none">Book</a></li>
+        <li><a href="about.html" class="es">Acerca de</a><a href="about.html" class="en" style="display:none">About</a></li>
+        <li><a href="contact.html" class="es">Contacto</a><a href="contact.html" class="en" style="display:none">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-links">
+      <h4 class="es">Legal</h4>
+      <h4 class="en" style="display:none">Legal</h4>
+      <ul>
+        <li><a href="privacy.html" class="es">Privacidad</a><a href="privacy.html" class="en" style="display:none">Privacy</a></li>
+        <li><a href="https://instagram.com/marimbashome" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p class="es">© 2015–2026 Marimbas Home. Todos los derechos reservados.</p>
+    <p class="en" style="display:none">© 2015–2026 Marimbas Home. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Language toggle
+  function toggleLanguage() {
+    const body = document.body;
+    if (body.classList.contains('en')) {
+      body.classList.remove('en');
+      localStorage.setItem('language', 'es');
+    } else {
+      body.classList.add('en');
+      localStorage.setItem('language', 'en');
+    }
+  }
+
+  // Load saved language preference
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('language');
+    if (saved === 'en') {
+      document.body.classList.add('en');
+    }
+  });
+</script>
+
+</body>
+</html>
