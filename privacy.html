@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Política de Privacidad de Marimbas Home — transparencia en el tratamiento de datos, cookies y publicidad.">
+  <meta name="google-adsense-account" content="ca-pub-5779958677522085">
+  <title>Política de Privacidad — Marimbas Home</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --slate: #3D6B35;
+      --slate-dark: #1B3A1A;
+      --copper: #C67B5C;
+      --copper-dark: #A8624A;
+      --gold: #FFD700;
+      --chiapas: #3D6B35;
+      --sage: #96CEB4;
+      --teal: #4ECDC4;
+      --coral: #e17055;
+      --linen: #F5F0E8;
+      --sand: #E8DFD1;
+      --cream: #FAF7F2;
+      --charcoal: #2C2C2C;
+      --charcoal-light: #4A4A4A;
+      --muted: #8B8B8B;
+      --white: #FFFFFF;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: transparent;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-logo svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--slate);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .lang-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      transition: color 0.3s;
+    }
+
+    .lang-toggle:hover {
+      color: var(--slate);
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-slate {
+      background: var(--slate);
+      color: var(--white);
+    }
+
+    .btn-slate:hover {
+      background: var(--slate-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(61, 107, 53, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--slate-dark);
+      color: var(--white);
+      padding: 8rem 2rem 4rem;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: var(--sage);
+      margin-bottom: 2rem;
+    }
+
+    /* Content Sections */
+    section {
+      padding: 4rem 0;
+    }
+
+    .privacy-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .privacy-section {
+      margin-bottom: 3rem;
+    }
+
+    .privacy-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--slate);
+      border-bottom: 2px solid var(--sand);
+      padding-bottom: 0.5rem;
+    }
+
+    .privacy-section p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--charcoal-light);
+      margin-bottom: 1rem;
+    }
+
+    .privacy-section ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+
+    .privacy-section li {
+      color: var(--charcoal-light);
+      margin-bottom: 0.7rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .privacy-section li:before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: var(--slate);
+    }
+
+    .privacy-section a {
+      color: var(--slate);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .privacy-section a:hover {
+      text-decoration: underline;
+    }
+
+    .highlight-box {
+      background: var(--linen);
+      padding: 1.5rem;
+      border-left: 4px solid var(--copper);
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .highlight-box strong {
+      color: var(--charcoal);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .footer-brand svg {
+      width: 32px;
+      height: 32px;
+      margin-top: 4px;
+    }
+
+    .footer-brand div h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand .tagline {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .footer-links h4 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--sage);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        padding: 5rem 1rem 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .privacy-section h2 {
+        font-size: 1.25rem;
+      }
+
+      section {
+        padding: 2rem 0;
+      }
+    }
+
+    /* Language content */
+    .en { display: none; }
+    body.en .es { display: none; }
+    body.en .en { display: inline; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 12l9-9 9 9M3 12v7a2 2 0 002 2h14a2 2 0 002-2v-7M9 12v7h6v-7"/>
+      <ellipse cx="12" cy="17" rx="2" ry="1" fill="currentColor"/>
+    </svg>
+    <span class="es">Marimbas Home</span>
+    <span class="en">Marimbas Home</span>
+  </a>
+  
+  <ul class="nav-links">
+    <li><a href="index.html" class="es">Inicio</a><a href="index.html" class="en" style="display:none">Home</a></li>
+    <li><a href="about.html" class="es">Acerca de</a><a href="about.html" class="en" style="display:none">About</a></li>
+    <li><a href="contact.html" class="es">Contacto</a><a href="contact.html" class="en" style="display:none">Contact</a></li>
+    <li><a href="privacy.html" class="es">Privacidad</a><a href="privacy.html" class="en" style="display:none">Privacy</a></li>
+  </ul>
+  
+  <div class="nav-right">
+    <button class="lang-toggle" onclick="toggleLanguage()">
+      <span class="es">EN</span>
+      <span class="en" style="display:none">ES</span>
+    </button>
+    <a href="https://book.marimbashome.com" class="btn btn-slate">
+      <span class="es">Reservar</span>
+      <span class="en" style="display:none">Book</span>
+    </a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <h1 class="es">Política de Privacidad</h1>
+    <h1 class="en" style="display:none">Privacy Policy</h1>
+    <p class="subtitle es">Última actualización: 3 de abril de 2026</p>
+    <p class="subtitle en" style="display:none">Last updated: April 3, 2026</p>
+  </div>
+</div>
+
+<section class="container">
+  <div class="privacy-content">
+    
+    <div class="privacy-section">
+      <h2 class="es">1. Información General</h2>
+      <h2 class="en" style="display:none">1. General Information</h2>
+      
+      <p class="es">Marimbas Home Opera los sitios web <strong>marimbashome.com</strong> y <strong>book.marimbashome.com</strong>. Esta Política de Privacidad explica cómo recopilamos, usamos, protegemos y compartimos tu información personal cuando interactúas con nuestros servicios.</p>
+      <p class="en" style="display:none">Marimbas Home operates the websites <strong>marimbashome.com</strong> and <strong>book.marimbashome.com</strong>. This Privacy Policy explains how we collect, use, protect, and share your personal information when you interact with our services.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2 class="es">2. Datos que recopilamos</h2>
+      <h2 class="en" style="display:none">2. Data We Collect</h2>
+      
+      <p class="es">Recopilamos la siguiente información:</p>
+      <p class="en" style="display:none">We collect the following information:</p>
+      
+      <ul>
+        <li class="es"><strong>Google AdSense</strong> — ID del Editor: <code>ca-pub-5779958677522085</code>. Recopilamos datos de comportamiento para mostrar anuncios personalizados.</li>
+        <li class="en" style="display:none"><strong>Google AdSense</strong> — Publisher ID: <code>ca-pub-5779958677522085</code>. We collect behavioral data to display personalized ads.</li>
+        
+        <li class="es"><strong>Google Analytics (GA4)</strong> — Datos sobre cómo interactúas con nuestro sitio (páginas visitadas, tiempo en sitio, dispositivo, ubicación aproximada).</li>
+        <li class="en" style="display:none"><strong>Google Analytics (GA4)</strong> — Data about how you interact with our site (pages visited, time on site, device, approximate location).</li>
+        
+        <li class="es"><strong>Registros técnicos</strong> — Dirección IP, tipo de navegador, sistemas operativos, páginas de referencia. Se usan para mejorar la seguridad y el rendimiento del sitio.</li>
+        <li class="en" style="display:none"><strong>Technical logs</strong> — IP address, browser type, operating systems, referrer pages. Used to improve site security and performance.</li>
+        
+        <li class="es"><strong>Información de reservas</strong> — Si realizas una reserva en book.marimbashome.com, recopilamos nombre, email, teléfono y preferencias de hospedaje.</li>
+        <li class="en" style="display:none"><strong>Booking Information</strong> — If you make a reservation on book.marimbashome.com, we collect your name, email, phone number, and accommodation preferences.</li>
+      </ul>
+    </div>
+
+    <div class="privacy-section">
+      <h2 class="es">3. Cookies y tecnologías similares</h2>
+      <h2 class="en" style="display:none">3. Cookies and Similar Technologies</h2>
+      
+      <p class="es">Utilizamos cookies de primera y tercera parte para:</p>
+      <p class="en" style="display:none">We use first-party and third-party cookies to:</p>
+      
+      <ul>
+        <li class="es">Recordar tus preferencias de idioma y configuración</li>
+        <li class="en" style="display:none">Remember your language preferences and settings</li>
+        
+        <li class="es">Habilitar publicidad personalizada a través de Google AdSense</li>
+        <li class="en" style="display:none">Enable personalized advertising through Google AdSense</li>
+        
+        <li class="es">Analizar el comportamiento del usuario con Google Analytics</li>
+        <li class="en" style="display:none">Analyze user behavior with Google Analytics</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <strong class="es">Puedes controlar las cookies</strong><span class="es"> mediante la configuración de tu navegador. Para obtener más información sobre publicidad personalizada, visita <a href="https://myaccount.google.com/ads-preferences" target="_blank">Google Ad Preferences</a>.</span>
+        <strong class="en" style="display:none">You can control cookies</strong><span class="en" style="display:none"> through your browser settings. For more information about personalized advertising, visit <a href="https://myaccount.google.com/ads-preferences" target="_blank">Google Ad Preferences</a>.</span>
+      </div>
+    </div>
+
+    <div class="privacy-section">
+      <h2 class="es">4. Publicidad — Google AdSense</h2>
+      <h2 class="en" style="display:none">4. Advertising — Google AdSense</h2>
+      
+      <p class="es">Marimbas Home participa en el programa Google AdSense para monetizar el contenido del sitio. Esto implica:</p>
+      <p class="en" style="display:none">Marimbas Home participates in the Google AdSense program to monetize site content. This involves:</p>
+      
+      <ul>
+        <li class="es">Mostrar anuncios relevantes basados en tu actividad de navegación</li>
+        <li class="en" style="display:none">Displaying relevant ads based on your browsing activity</li>
+        
+        <li class="es">Recopilación de datos de comportamiento para optimizar los anuncios</li>
+        <li class="en" style="display:none">Collection of behavioral data to optimize ads</li>
+        
+        <li class="es">ID del Editor de Google AdSense: <strong>ca-pub-5779958677522085</strong></li>
+        <li class="en" style="display:none">Google AdSense Publisher ID: <strong>ca-pub-5779958677522085</strong></li>
+      </ul>
+      
+      <p class="es">Google puede usar esta información de acuerdo con su propia <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad</a>.</p>
+      <p class="en" style="display:none">Google may use this information according to its own <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2 class="es">5. Derechos ARCO (LFPDPPP)</h2>
+      <h2 class="en" style="display:none">5. ARCO Rights (LFPDPPP)</h2>
+      
+      <p class="es">Si eres residente de México, tienes derecho a:</p>
+      <p class="en" style="display:none">If you are a Mexico resident, you have the right to:</p>
+      
+      <ul>
+        <li class="es"><strong>Acceso</strong> — Conocer qué datos tenemos sobre ti</li>
+        <li class="en" style="display:none"><strong>Access</strong> — Know what data we have about you</li>
+        
+        <li class="es"><strong>Rectificación</strong> — Corregir información inexacta</li>
+        <li class="en" style="display:none"><strong>Rectification</strong> — Correct inaccurate information</li>
+        
+        <li class="es"><strong>Cancelación</strong> — Solicitar la eliminación de tus datos</li>
+        <li class="en" style="display:none"><strong>Cancellation</strong> — Request deletion of your data</li>
+        
+        <li class="es"><strong>Oposición</strong> — Oponerme al procesamiento de tus datos</li>
+        <li class="en" style="display:none"><strong>Opposition</strong> — Oppose processing of your data</li>
+      </ul>
+      
+      <p class="es">Para ejercer estos derechos, contacta a <strong>enrique@marimbashome.com</strong> o llamanos al <strong>+52 55 1837 7126</strong>. Responderemos en 30 días de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de Particulares (LFPDPPP).</p>
+      <p class="en" style="display:none">To exercise these rights, contact <strong>enrique@marimbashome.com</strong> or call us at <strong>+52 55 1837 7126</strong>. We will respond within 30 days in compliance with the Federal Law for the Protection of Personal Data Held by Private Parties (LFPDPPP).</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2 class="es">6. Seguridad de datos</h2>
+      <h2 class="en" style="display:none">6. Data Security</h2>
+      
+      <p class="es">Implementamos medidas de seguridad para proteger tu información:</p>
+      <p class="en" style="display:none">We implement security measures to protect your information:</p>
+      
+      <ul>
+        <li class="es"><strong>Encriptación HTTPS/TLS</strong> — Todos nuestros sitios utilizan conexiones cifradas</li>
+        <li class="en" style="display:none"><strong>HTTPS/TLS Encryption</strong> — All our sites use encrypted connections</li>
+        
+        <li class="es"><strong>Infraestructura segura en la nube</strong> — Alojamiento en servidores seguros y confiables</li>
+        <li class="en" style="display:none"><strong>Secure cloud infrastructure</strong> — Hosting on secure and reliable servers</li>
+        
+        <li class="es"><strong>Monitoreo continuo</strong> — Detectamos y prevenimos actividades no autorizadas</li>
+        <li class="en" style="display:none"><strong>Continuous monitoring</strong> — We detect and prevent unauthorized activities</li>
+      </ul>
+    </div>
+
+    <div class="privacy-section">
+      <h2 class="es">7. Compartir datos con terceros</h2>
+      <h2 class="en" style="display:none">7. Sharing Data with Third Parties</h2>
+      
+      <p class="es">Compartimos información con:</p>
+      <p class="en" style="display:none">We share information with:</p>
+      
+      <ul>
+        <li class="es"><strong>Google</strong> — A través de Google Analytics y Google AdSense</li>
+        <li class="en" style="display:none"><strong>Google</strong> — Through Google Analytics and Google AdSense</li>
+        
+        <li class="es"><strong>Proveedores de hosting</strong> — Para mantener nuestros sitios en línea</li>
+        <li class="en" style="display:none"><strong>Hosting providers</strong> — To keep our sites online</li>
+        
+        <li class="es"><strong>Plataformas de reserva</strong> — Si realizas reservas en book.marimbashome.com</li>
+        <li class="en" style="display:none"><strong>Booking platforms</strong> — If you make reservations on book.marimbashome.com</li>
+      </ul>
+      
+      <p class="es">No vendemos tu información personal a terceros no afiliados.</p>
+      <p class="en" style="display:none">We do not sell your personal information to unaffiliated third parties.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2 class="es">8. Cambios a esta política</h2>
+      <h2 class="en" style="display:none">8. Changes to This Policy</h2>
+      
+      <p class="es">Podemos actualizar esta Política de Privacidad de vez en cuando. Los cambios significativos se notificarán mediante avisos en nuestro sitio. Tu uso continuado del sitio después de los cambios constituye aceptación de la política actualizada.</p>
+      <p class="en" style="display:none">We may update this Privacy Policy from time to time. Significant changes will be notified through notices on our site. Your continued use of the site after changes constitutes acceptance of the updated policy.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2 class="es">9. Contacto</h2>
+      <h2 class="en" style="display:none">9. Contact</h2>
+      
+      <p class="es">Si tienes preguntas sobre esta Política de Privacidad, contáctanos:</p>
+      <p class="en" style="display:none">If you have questions about this Privacy Policy, contact us:</p>
+      
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:enrique@marimbashome.com">enrique@marimbashome.com</a></li>
+        <li><strong>WhatsApp:</strong> <a href="https://wa.me/5551837126">+52 55 1837 7126</a></li>
+        <li><strong>Web:</strong> <a href="https://marimbashome.com">marimbashome.com</a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12l9-9 9 9M3 12v7a2 2 0 002 2h14a2 2 0 002-2v-7M9 12v7h6v-7"/>
+        <ellipse cx="12" cy="17" rx="2" ry="1" fill="currentColor"/>
+      </svg>
+      <div>
+        <h3>Marimbas Home</h3>
+        <p class="tagline es">Estancias en CDMX y Chiapas · Desde 2015</p>
+        <p class="tagline en" style="display:none">Stays in CDMX and Chiapas · Since 2015</p>
+      </div>
+    </div>
+    
+    <div class="footer-links">
+      <h4 class="es">Explorar</h4>
+      <h4 class="en" style="display:none">Explore</h4>
+      <ul>
+        <li><a href="https://book.marimbashome.com" class="es">Reservar</a><a href="https://book.marimbashome.com" class="en" style="display:none">Book</a></li>
+        <li><a href="about.html" class="es">Acerca de</a><a href="about.html" class="en" style="display:none">About</a></li>
+        <li><a href="contact.html" class="es">Contacto</a><a href="contact.html" class="en" style="display:none">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-links">
+      <h4 class="es">Legal</h4>
+      <h4 class="en" style="display:none">Legal</h4>
+      <ul>
+        <li><a href="privacy.html" class="es">Privacidad</a><a href="privacy.html" class="en" style="display:none">Privacy</a></li>
+        <li><a href="https://instagram.com/marimbashome" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p class="es">© 2015–2026 Marimbas Home. Todos los derechos reservados.</p>
+    <p class="en" style="display:none">© 2015–2026 Marimbas Home. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Language toggle
+  function toggleLanguage() {
+    const body = document.body;
+    if (body.classList.contains('en')) {
+      body.classList.remove('en');
+      localStorage.setItem('language', 'es');
+    } else {
+      body.classList.add('en');
+      localStorage.setItem('language', 'en');
+    }
+  }
+
+  // Load saved language preference
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('language');
+    if (saved === 'en') {
+      document.body.classList.add('en');
+    }
+  });
+</script>
+
+</body>
+</html>
