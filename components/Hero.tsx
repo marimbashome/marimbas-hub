@@ -7,6 +7,10 @@ export default function Hero() {
   const { t } = useI18n()
   return (
     <section className="hero">
+      <div className="hero-bg" aria-hidden="true">
+        <div className="hero-bg-image" />
+        <div className="hero-bg-overlay" />
+      </div>
       <FadeUp className="hero-content">
         <div className="hero-badge">
           <span className="hero-dot"></span>
@@ -26,16 +30,22 @@ export default function Hero() {
             <div className="trust-num">5,000+</div>
             <div className="trust-label">{t('trust1_label')}</div>
           </div>
+          <div className="trust-divider" aria-hidden="true" />
           <div className="trust-item">
             <div className="trust-num">10</div>
             <div className="trust-label">{t('trust2_label')}</div>
           </div>
+          <div className="trust-divider" aria-hidden="true" />
           <div className="trust-item">
             <div className="trust-num">28</div>
             <div className="trust-label">{t('trust3_label')}</div>
           </div>
         </div>
       </FadeUp>
+      <a href="#about" className="hero-scroll" aria-label="Scroll to content">
+        <span className="hero-scroll-line" />
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
     </section>
   )
 }
