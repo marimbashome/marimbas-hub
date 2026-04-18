@@ -41,7 +41,7 @@ export default function Nav() {
           <li><a href="#experience">{t('nav_exp')}</a></li>
           <li><a href="#tech">{t('nav_prod')}</a></li>
           <li><a href="#properties">{t('nav_dest')}</a></li>
-          <li><a href="#owners">{t('nav_owners')}</a></li>
+          <li><a href="https://propietarios.marimbashome.com" target="_blank" rel="noopener">{t('nav_owners')}</a></li>
           <li><a href="https://book.marimbashome.com" className="nav-cta">{t('nav_cta')}</a></li>
           <li><button onClick={toggleLang} className="lang-toggle" aria-label="Switch language">{lang === 'es' ? 'EN' : 'ES'}</button></li>
         </ul>
@@ -57,7 +57,7 @@ export default function Nav() {
             <li><a href="#experience" onClick={closeMenu}>{t('nav_exp')}</a></li>
             <li><a href="#tech" onClick={closeMenu}>{t('nav_prod')}</a></li>
             <li><a href="#properties" onClick={closeMenu}>{t('nav_dest')}</a></li>
-            <li><a href="#owners" onClick={closeMenu}>{t('nav_owners')}</a></li>
+            <li><a href="https://propietarios.marimbashome.com" target="_blank" rel="noopener" onClick={closeMenu}>{t('nav_owners')}</a></li>
             <li><a href="https://book.marimbashome.com" className="nav-cta" onClick={closeMenu}>{t('nav_cta')}</a></li>
             <li><button onClick={() => { toggleLang(); closeMenu() }} className="lang-toggle" aria-label="Switch language">{lang === 'es' ? 'EN' : 'ES'}</button></li>
           </ul>
