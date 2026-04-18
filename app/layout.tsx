@@ -15,19 +15,111 @@ const inter = Inter({
   display: 'swap',
 })
 
+const siteUrl = 'https://marimbashome.com'
+const ogImage = `${siteUrl}/og-image.png`
+
 export const metadata: Metadata = {
-  title: 'Marimbas Home \u2014 Tu Hogar en M\u00e9xico',
+  metadataBase: new URL(siteUrl),
+  title: 'Marimbas Home — Tu Hogar en México',
   description:
-    'Departamentos y casas para tu pr\u00f3xima estancia en Ciudad de M\u00e9xico y Chiapas. M\u00e1s de 5,000 hu\u00e9spedes conf\u00edan en Marimbas Home desde 2015.',
+    'Departamentos y casas para tu próxima estancia en Ciudad de México y Chiapas. Más de 5,000 huéspedes confían en Marimbas Home desde 2015.',
+  keywords: [
+    'Marimbas Home',
+    'renta vacacional México',
+    'Airbnb Condesa',
+    'Airbnb Tuxtla',
+    'hospedaje CDMX',
+    'hospedaje Chiapas',
+    'departamentos CDMX',
+    'casas Tuxtla',
+  ],
+  authors: [{ name: 'Marimbas Home' }],
   verification: {
     google: 'google4a0dc3d8d43a19b2',
   },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      'es-MX': siteUrl,
+      'en-US': siteUrl,
+    },
+  },
   openGraph: {
-    title: 'Marimbas Home \u2014 Tu Hogar en M\u00e9xico',
+    title: 'Marimbas Home — Tu Hogar en México',
     description:
-      'Espacios con car\u00e1cter en CDMX y Chiapas. Check-in digital, atenci\u00f3n personal, m\u00e1s de 10 a\u00f1os de experiencia.',
+      'Espacios con carácter en CDMX y Chiapas. Check-in digital, atención personal, más de 10 años de experiencia.',
     type: 'website',
-    url: 'https://marimbashome.com',
+    url: siteUrl,
+    siteName: 'Marimbas Home',
+    locale: 'es_MX',
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: 'Marimbas Home — Tu Hogar en México',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Marimbas Home — Tu Hogar en México',
+    description:
+      'Departamentos y casas en CDMX y Chiapas. Más de 5,000 huéspedes desde 2015.',
+    images: [ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  name: 'Marimbas Home',
+  url: siteUrl,
+  logo: `${siteUrl}/og-image.png`,
+  image: ogImage,
+  description:
+    'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015. 17 propiedades, 28 listings activos.',
+  founder: 'Enrique Miceli',
+  foundingDate: '2015-05',
+  areaServed: [
+    { '@type': 'City', name: 'Ciudad de México' },
+    { '@type': 'City', name: 'Tuxtla Gutiérrez' },
+    { '@type': 'City', name: 'Berriozabal' },
+    { '@type': 'City', name: 'Ocozocoautla' },
+  ],
+  sameAs: [
+    'https://book.marimbashome.com',
+    'https://propietarios.marimbashome.com',
+    'https://www.airbnb.com/users/show/9849014',
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.69',
+    reviewCount: '5000',
+    bestRating: '5',
+    worstRating: '1',
+  },
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Marimbas Home',
+  url: siteUrl,
+  inLanguage: ['es-MX', 'en-US'],
+  publisher: {
+    '@type': 'Organization',
+    name: 'Marimbas Home',
   },
 }
 
@@ -39,6 +131,19 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="sitemap" type="application/xml" href="https://book.marimbashome.com/sitemap.xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
+      <body>
+        {children}
         {/* Google Analytics 4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-Q1NXNXMPMS"
@@ -58,8 +163,7 @@ export default function RootLayout({
           strategy="afterInteractive"
           crossOrigin="anonymous"
         />
-      </head>
-      <body>{children}</body>
+      </body>
     </html>
   )
 }
