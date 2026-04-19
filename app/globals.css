@@ -147,9 +147,9 @@ body {
 .hero-bg-overlay {
     position: absolute; inset: 0;
     background:
-        linear-gradient(180deg, rgba(27,58,26,0.35) 0%, rgba(27,58,26,0.55) 55%, rgba(27,58,26,0.75) 100%),
-        radial-gradient(ellipse at top right, rgba(198,123,92,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse at bottom left, rgba(61,107,53,0.22) 0%, transparent 60%);
+        linear-gradient(180deg, rgba(27,58,26,0.18) 0%, rgba(27,58,26,0.38) 55%, rgba(27,58,26,0.62) 100%),
+        radial-gradient(ellipse at top right, rgba(198,123,92,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse at bottom left, rgba(61,107,53,0.16) 0%, transparent 60%);
 }
 @keyframes heroKenBurns {
   0%   { transform: scale(1.05) translate(0, 0); }
@@ -445,17 +445,42 @@ body {
 .prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
 .prod-card {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius-lg); padding: 34px 30px;
-    transition: all var(--transition); position: relative; overflow: hidden;
+    border-radius: var(--radius-lg); padding: 0; overflow: hidden;
+    transition: all var(--transition); position: relative;
+    display: flex; flex-direction: column;
 }
 .prod-card::before {
     content: ''; position: absolute; top: 0; left: 50%; width: 60%; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
     transform: translateX(-50%); opacity: 0;
-    transition: opacity var(--transition);
+    transition: opacity var(--transition); z-index: 3;
 }
 .prod-card:hover::before { opacity: 1; }
 .prod-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); transform: translateY(-4px); }
+.prod-card:hover .prod-image { transform: scale(1.04); }
+.prod-image {
+    position: relative; width: 100%; aspect-ratio: 3 / 2;
+    background-size: cover; background-position: center;
+    transition: transform 900ms cubic-bezier(.2,.6,.2,1);
+    overflow: hidden;
+}
+.prod-image-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(20,30,20,0.12) 0%, rgba(20,30,20,0.35) 55%, rgba(20,30,20,0.72) 100%);
+}
+.prod-image-icon {
+    position: absolute; top: 18px; left: 18px; z-index: 2;
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+.prod-image-badge {
+    position: absolute; top: 22px; right: 18px; z-index: 2;
+    padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.prod-body { padding: 28px 30px 30px; }
 .prod-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
 .prod-icon {
     width: 50px; height: 50px; border-radius: 12px;
