@@ -1,0 +1,43 @@
+# Marimbas cross-cutting rollout 2026-05 — Lighthouse CI
+# This workflow runs read-only audits on every PR's Vercel preview deploy.
+# It does NOT touch production. It does NOT block merges (mode: warn).
+#
+# To make it block merges later, change `continue-on-error: true` → `false`.
+
+name: Lighthouse CI
+
+on:
+  deployment_status: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  lighthouse:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Preview'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true   # WARN-only mode for the first month. Switch to false after baseline established.
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Lighthouse CI
+        run: npm i -g @lhci/cli@0.14.x
+
+      - name: Run Lighthouse against preview URL
+        env:
+          LHCI_TARGET_URL: ${{ github.event.deployment_status.target_url }}
+        run: |
+          if [ -f lighthouserc.json ]; then
+            lhci autorun --config=./lighthouserc.json
+          else
+            echo "No lighthouserc.json found at repo root; skipping."
+            exit 0
+          fi
