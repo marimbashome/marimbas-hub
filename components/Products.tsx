@@ -20,7 +20,7 @@ export default function Products() {
             <div className="section-label">{t('prod_label')}</div>
             <h2 className="section-title">{t('prod_title')}</h2>
           </div>
-          <div className="products-intro-right" dangerouslySetInnerHTML={{ __html: t('prod_intro') }} />
+          <div className="products-intro-right"><span>{t('prod_intro_pre')}<strong>{t('prod_intro_strong')}</strong>{t('prod_intro_post')}</span></div>
         </FadeUp>
         <div className="prod-grid">
           {products.map((p, i) => (

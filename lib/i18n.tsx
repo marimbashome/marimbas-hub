@@ -100,9 +100,17 @@ const translations: Record<string, Record<Lang, string>> = {
   // Products
   prod_label: { es: 'Nuestros Productos', en: 'Our Products' },
   prod_title: { es: 'Herramientas que usamos todos los días — ahora disponibles para\u00a0ti', en: 'Tools we use every day — now available for\u00a0you' },
-  prod_intro: {
-    es: 'Construimos software para operar nuestras propias propiedades. Cada herramienta nació de un problema real y está probada con <strong>miles de estancias</strong>. Si administras propiedades, puedes usarlas hoy.',
-    en: 'We build software to run our own properties. Every tool was born from a real problem and tested with <strong>thousands of stays</strong>. If you manage properties, you can use them today.',
+  prod_intro_pre: {
+    es: 'Construimos software para operar nuestras propias propiedades. Cada herramienta nació de un problema real y está probada con ',
+    en: 'We build software to run our own properties. Every tool was born from a real problem and tested with ',
+  },
+  prod_intro_strong: {
+    es: 'miles de estancias',
+    en: 'thousands of stays',
+  },
+  prod_intro_post: {
+    es: '. Si administras propiedades, puedes usarlas hoy.',
+    en: '. If you manage properties, you can use them today.',
   },
   prod_bottom_pre: { es: '¿Administras propiedades?', en: 'Manage properties?' },
   prod_bottom_post: { es: ' Cada producto funciona de forma independiente — activa solo lo que necesites.', en: ' Each product works independently — activate only what you need.' },
