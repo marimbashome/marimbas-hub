@@ -1,5 +1,3 @@
-'use client'
-
 import { I18nProvider } from '@/lib/i18n'
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
