@@ -1,96 +1,89 @@
 name: Vercel deploy ERROR → Slack
 
-# Triggers after every push to main and any branch that hits production preview.
-# Waits ~90s for Vercel to finish the build, queries Vercel API for the
-# deployment matching the commit SHA, and if state === 'ERROR' POSTs to the
-# Supabase edge function `vercel-deploy-error-notify` which formats and sends
-# a Slack message to #ops-core.
+# Fires on Vercel's `deployment_status` event (delivered by the Vercel↔GitHub
+# integration), NOT on every push. The event already carries the FINAL build
+# state, so there is zero waiting/polling: the job only does real work when a
+# deploy reaches an ERROR state, and finishes in a few seconds.
+#
+# This replaces the previous push-triggered version that ran `sleep 100` + a
+# retry loop on EVERY push to main — billing ~3-5 GitHub Actions minutes per push
+# just to wait for the build. Same alert, same Slack #ops-core path, same
+# Supabase edge function `vercel-deploy-error-notify` — only the trigger and the
+# waiting changed.
 #
 # Why this exists: Vercel's built-in email notifications missed the 3 builds
 # that took book.marimbashome.com off the QA pass for 6 weeks (Mar 24 → May 5).
-# This workflow is the canary for `website` and `marimbas-guest-app`.
+# This workflow is the canary for `website` and `marimbas-guest-app`. It now also
+# catches failed PREVIEW builds at no extra cost, since the job only runs on error.
+#
+# Manual smoke test: Actions tab → this workflow → "Run workflow" (workflow_dispatch).
+# It looks up the latest deploy for HEAD and reports its state; it only sends a
+# Slack alert if that deploy actually ERRORed — a safe way to confirm the Vercel
+# token + API path still work.
 
 on:
-  push:
-    branches: [main]
+  deployment_status: {}
+  workflow_dispatch: {}
 
 permissions:
   contents: read
 
 jobs:
   notify-on-error:
+    # Only spend a runner on an actual failure (or a manual smoke test).
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.deployment_status.state == 'error' ||
+      github.event.deployment_status.state == 'failure'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - name: Wait for Vercel build
-        run: sleep 100
-
-      - name: Query Vercel deployment by SHA
-        id: vercel
+      - name: Check Vercel deploy state and alert Slack if ERROR
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          MARIMBAS_ADMIN_TOKEN: ${{ secrets.MARIMBAS_ADMIN_TOKEN }}
           TEAM_ID: team_Fg1MXTOak1GcwELAM4lCDpsS
           PROJECT_ID: prj_PWqcXFu1BSpooxA1svYJY2OwbgnE
           SHA: ${{ github.sha }}
-        run: |
-          set -e
-          # Try up to 6 times (10min total) — large repos sometimes take longer
-          for attempt in 1 2 3 4 5 6; do
-            RESP=$(curl -s -H "Authorization: Bearer $VERCEL_TOKEN" \
-              "https://api.vercel.com/v6/deployments?teamId=$TEAM_ID&projectId=$PROJECT_ID&limit=20")
-
-            # Find the deployment matching this commit SHA
-            DEPLOY=$(echo "$RESP" | jq -r --arg sha "$SHA" \
-              '.deployments[] | select(.meta.githubCommitSha == $sha)' | head -c 100000)
-
-            if [ -n "$DEPLOY" ] && [ "$DEPLOY" != "null" ]; then
-              STATE=$(echo "$DEPLOY" | jq -r '.state')
-              # If still BUILDING or QUEUED, wait and retry
-              if [ "$STATE" = "BUILDING" ] || [ "$STATE" = "QUEUED" ] || [ "$STATE" = "INITIALIZING" ]; then
-                echo "attempt $attempt: state=$STATE, waiting 60s..."
-                sleep 60
-                continue
-              fi
-
-              # Terminal state — extract everything we need
-              echo "deploy_id=$(echo "$DEPLOY" | jq -r '.uid // .id')" >> $GITHUB_OUTPUT
-              echo "deploy_state=$STATE" >> $GITHUB_OUTPUT
-              echo "deploy_url=$(echo "$DEPLOY" | jq -r '.url')" >> $GITHUB_OUTPUT
-              echo "inspector_url=$(echo "$DEPLOY" | jq -r '.inspectorUrl // empty')" >> $GITHUB_OUTPUT
-              echo "found=true" >> $GITHUB_OUTPUT
-              echo "Found deployment: state=$STATE"
-              exit 0
-            fi
-            echo "attempt $attempt: no matching deployment yet, waiting 60s..."
-            sleep 60
-          done
-          echo "found=false" >> $GITHUB_OUTPUT
-          echo "::warning::Could not find Vercel deployment for SHA $SHA after 10min"
-
-      - name: POST to Supabase edge function (only if state == ERROR)
-        if: steps.vercel.outputs.found == 'true' && steps.vercel.outputs.deploy_state == 'ERROR'
-        env:
-          MARIMBAS_ADMIN_TOKEN: ${{ secrets.MARIMBAS_ADMIN_TOKEN }}
-          SHA: ${{ github.sha }}
           REPO: ${{ github.event.repository.name }}
-          COMMIT_MSG: ${{ github.event.head_commit.message }}
-          COMMIT_AUTHOR: ${{ github.event.head_commit.author.name }}
-          DEPLOY_ID: ${{ steps.vercel.outputs.deploy_id }}
-          DEPLOY_STATE: ${{ steps.vercel.outputs.deploy_state }}
-          DEPLOY_URL: ${{ steps.vercel.outputs.deploy_url }}
-          INSPECTOR_URL: ${{ steps.vercel.outputs.inspector_url }}
         run: |
           set -e
-          # Build payload via jq to escape COMMIT_MSG safely
-          PAYLOAD=$(jq -n \
+
+          # One call — the deploy is already in a terminal state when this runs.
+          RESP=$(curl -s -H "Authorization: Bearer $VERCEL_TOKEN" \
+            "https://api.vercel.com/v6/deployments?teamId=$TEAM_ID&projectId=$PROJECT_ID&limit=20")
+
+          # Find the deployment matching this commit SHA.
+          DEPLOY=$(echo "$RESP" | jq -c --arg sha "$SHA" \
+            'first(.deployments[] | select(.meta.githubCommitSha == $sha)) // empty')
+
+          if [ -z "$DEPLOY" ]; then
+            echo "::warning::No Vercel deployment matched SHA $SHA — no alert sent."
+            exit 0
+          fi
+
+          STATE=$(echo "$DEPLOY" | jq -r '.state // .readyState // "UNKNOWN"')
+          echo "Vercel deploy state for $SHA: $STATE"
+
+          if [ "$STATE" != "ERROR" ]; then
+            echo "::notice::state=$STATE (not ERROR) — no Slack alert."
+            exit 0
+          fi
+
+          # Build the payload exactly like the previous workflow (same edge-function
+          # contract). Commit message/author come from Vercel meta because the
+          # deployment_status event has no head_commit. jq handles escaping safely.
+          PAYLOAD=$(echo "$DEPLOY" | jq \
             --arg repo "$REPO" \
             --arg sha "$SHA" \
-            --arg msg "$COMMIT_MSG" \
-            --arg author "$COMMIT_AUTHOR" \
-            --arg deploy_id "$DEPLOY_ID" \
-            --arg deploy_state "$DEPLOY_STATE" \
-            --arg deploy_url "$DEPLOY_URL" \
-            --arg inspector_url "$INSPECTOR_URL" \
-            '{repo: $repo, commit_sha: $sha, commit_message: $msg, commit_author: $author, deploy_id: $deploy_id, deploy_state: $deploy_state, deploy_url: $deploy_url, inspector_url: $inspector_url}')
+            '{repo: $repo,
+              commit_sha: $sha,
+              commit_message: (.meta.githubCommitMessage // ""),
+              commit_author: (.meta.githubCommitAuthorName // ""),
+              deploy_id: (.uid // .id),
+              deploy_state: .state,
+              deploy_url: .url,
+              inspector_url: (.inspectorUrl // "")}')
 
           curl -fsS -X POST \
             -H "Authorization: Bearer $MARIMBAS_ADMIN_TOKEN" \
@@ -98,8 +91,4 @@ jobs:
             -d "$PAYLOAD" \
             https://xqjjdopwinljrnxexpwd.supabase.co/functions/v1/vercel-deploy-error-notify
 
-          echo "::notice::Slack notification sent to #ops-core for ERROR deploy $DEPLOY_ID"
-
-      - name: Log success (state was READY or other non-error)
-        if: steps.vercel.outputs.found == 'true' && steps.vercel.outputs.deploy_state != 'ERROR'
-        run: echo "::notice::Vercel deploy state=${{ steps.vercel.outputs.deploy_state }} — no Slack alert sent"
+          echo "::notice::Slack alert sent to #ops-core for ERROR deploy."
