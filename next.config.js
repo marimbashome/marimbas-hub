@@ -5,6 +5,7 @@ const securityHeaders = require('./lib/security-headers')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  poweredByHeader: false,
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },

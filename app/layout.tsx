@@ -41,7 +41,6 @@ export const metadata: Metadata = {
     canonical: siteUrl,
     languages: {
       'es-MX': siteUrl,
-      'en-US': siteUrl,
     },
   },
   openGraph: {
@@ -81,7 +80,7 @@ const organizationSchema = {
   logo: `${siteUrl}/opengraph-image`,
   image: ogImage,
   description:
-    'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015. 17 propiedades, 28 listings activos.',
+    'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015. 19 propiedades canonicas, 28 listings activos.',
   founder: 'Enrique Miceli',
   foundingDate: '2015-05',
   areaServed: [
@@ -95,13 +94,6 @@ const organizationSchema = {
     'https://propietarios.marimbashome.com',
     'https://www.airbnb.com/users/show/9849014',
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.69',
-    reviewCount: '5000',
-    bestRating: '5',
-    worstRating: '1',
-  },
 }
 
 const websiteSchema = {
@@ -109,7 +101,7 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: 'Marimbas Home',
   url: siteUrl,
-  inLanguage: ['es-MX', 'en-US'],
+  inLanguage: 'es-MX',
   publisher: {
     '@type': 'Organization',
     name: 'Marimbas Home',
@@ -125,7 +117,7 @@ export default function RootLayout({
     <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="sitemap" type="application/xml" href="https://book.marimbashome.com/sitemap.xml" />
+        <link rel="sitemap" type="application/xml" href={`${siteUrl}/sitemap.xml`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

@@ -61,6 +61,7 @@ body {
 .nav-logo {
     display: flex; align-items: center; gap: 12px;
     text-decoration: none; color: var(--charcoal);
+    border: 0; background: transparent; padding: 0; cursor: pointer;
     transition: opacity var(--transition);
 }
 .nav-logo:hover { opacity: 0.75; }
@@ -138,12 +139,10 @@ body {
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-bg-image {
     position: absolute; inset: 0;
-    background-image: url('/images/hero-home.jpg');
-    background-size: cover;
-    background-position: center;
     transform: scale(1.05);
     animation: heroKenBurns 24s ease-in-out infinite alternate;
 }
+.hero-bg-img { object-fit: cover; }
 .hero-bg-overlay {
     position: absolute; inset: 0;
     background:
@@ -460,10 +459,10 @@ body {
 .prod-card:hover .prod-image { transform: scale(1.04); }
 .prod-image {
     position: relative; width: 100%; aspect-ratio: 3 / 2;
-    background-size: cover; background-position: center;
     transition: transform 900ms cubic-bezier(.2,.6,.2,1);
     overflow: hidden;
 }
+.prod-img { object-fit: cover; }
 .prod-image-gradient {
     position: absolute; inset: 0;
     background: linear-gradient(180deg, rgba(20,30,20,0.12) 0%, rgba(20,30,20,0.35) 55%, rgba(20,30,20,0.72) 100%);
@@ -528,9 +527,9 @@ body {
 .prop-zone:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(27,58,26,0.22); }
 .prop-zone-image {
     position: absolute; inset: 0; z-index: 0;
-    background-size: cover; background-position: center;
     transition: transform 0.8s cubic-bezier(0.2,0.8,0.2,1);
 }
+.prop-zone-img { object-fit: cover; }
 .prop-zone:hover .prop-zone-image { transform: scale(1.07); }
 .prop-zone-gradient {
     position: absolute; inset: 0; z-index: 1;

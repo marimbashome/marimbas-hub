@@ -32,10 +32,10 @@ export default function Nav() {
   return (
     <nav className={`nav${scrolled ? ' scrolled' : ''}${mobileOpen ? ' mobile-open' : ''}`}>
       <div className="nav-inner">
-        <a href="/" className="nav-logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); }}>
+        <button type="button" className="nav-logo" onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); }}>
           <LogoIcon />
           <span className="nav-logo-text">Marimbas Home</span>
-        </a>
+        </button>
         <ul className="nav-links">
           <li><a href="#about">{t('nav_about')}</a></li>
           <li><a href="#experience">{t('nav_exp')}</a></li>

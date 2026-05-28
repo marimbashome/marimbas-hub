@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { useI18n } from '@/lib/i18n'
 import FadeUp from './FadeUp'
 import ArrowIcon from './ArrowIcon'
@@ -26,7 +27,14 @@ export default function Products() {
           {products.map((p, i) => (
             <FadeUp key={p.title} delay={i + 1}>
               <div className="prod-card">
-                <div className="prod-image" style={{ backgroundImage: `url(${p.img})` }} aria-hidden="true">
+                <div className="prod-image" aria-hidden="true">
+                  <Image
+                    src={p.img}
+                    alt=""
+                    fill
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                    className="prod-img"
+                  />
                   <div className="prod-image-gradient" />
                   <div className="prod-image-icon" style={{ background: p.bg }}>{p.icon}</div>
                   <span className={`prod-image-badge ${p.live ? 'badge-live' : 'badge-soon'}`}>{t(p.live ? 'badge_live' : 'badge_soon')}</span>

@@ -4,3 +4,12 @@ out/
 .env*
 *.tsbuildinfo
 next-env.d.ts
+
+# iCloud duplicate files (no versionar)
+* 2.json
+CLAUDE.md
+graphify-out/
+vercel 2.json
+
+# Audit reports (locales, no se publican)
+AUDIT_REPORT.md

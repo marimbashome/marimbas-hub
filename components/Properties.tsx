@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { useI18n } from '@/lib/i18n'
 import FadeUp from './FadeUp'
 import ArrowIcon from './ArrowIcon'
@@ -16,7 +17,15 @@ export default function Properties() {
         <div className="prop-grid">
           <FadeUp delay={1}>
             <a href="https://book.marimbashome.com" className="prop-zone" data-zone="cdmx">
-              <div className="prop-zone-image" aria-hidden="true" style={{ backgroundImage: 'url(/images/cdmx.jpg)' }} />
+              <div className="prop-zone-image" aria-hidden="true">
+                <Image
+                  src="/images/cdmx.jpg"
+                  alt=""
+                  fill
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                  className="prop-zone-img"
+                />
+              </div>
               <div className="prop-zone-gradient" aria-hidden="true" />
               <div className="prop-zone-inner">
                 <div className="prop-zone-pin">
@@ -44,7 +53,15 @@ export default function Properties() {
           </FadeUp>
           <FadeUp delay={2}>
             <a href="https://book.marimbashome.com" className="prop-zone" data-zone="chiapas">
-              <div className="prop-zone-image" aria-hidden="true" style={{ backgroundImage: 'url(/images/chiapas.jpg)' }} />
+              <div className="prop-zone-image" aria-hidden="true">
+                <Image
+                  src="/images/chiapas.jpg"
+                  alt=""
+                  fill
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                  className="prop-zone-img"
+                />
+              </div>
               <div className="prop-zone-gradient" aria-hidden="true" />
               <div className="prop-zone-inner">
                 <div className="prop-zone-pin">

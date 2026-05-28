@@ -38,6 +38,7 @@ export default function Testimonials() {
           {slides.map((_, i) => (
             <button
               key={i}
+              role="tab"
               className={`testimonial-dot${i === current ? ' active' : ''}`}
               onClick={() => setCurrent(i)}
               aria-label={`Testimonial ${i + 1}`}

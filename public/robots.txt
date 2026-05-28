@@ -3,5 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://book.marimbashome.com/sitemap.xml
-
+Sitemap: https://marimbashome.com/sitemap.xml

@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { useI18n } from '@/lib/i18n'
 import ArrowIcon from './ArrowIcon'
 import FadeUp from './FadeUp'
@@ -8,7 +9,16 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-bg" aria-hidden="true">
-        <div className="hero-bg-image" />
+        <div className="hero-bg-image">
+          <Image
+            src="/images/hero-home.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hero-bg-img"
+          />
+        </div>
         <div className="hero-bg-overlay" />
       </div>
       <FadeUp className="hero-content">
