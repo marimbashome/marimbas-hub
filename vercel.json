@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/blog",
+      "destination": "https://book.marimbashome.com/es/guides"
+    },
+    {
       "source": "/blog/:path*",
       "destination": "https://book.marimbashome.com/es/guides/:path*"
     }
