@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/blog/:path*",
-      "destination": "https://marimbas-blog.vercel.app/blog/:path*"
+      "destination": "https://book.marimbashome.com/es/guides/:path*"
     }
   ],
   "headers": [
