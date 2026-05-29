@@ -24,5 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    {
+      // Blog is served via Vercel rewrite to the marimbas-blog project.
+      // Included here so Google crawls /blog via this sitemap.
+      url: `${siteUrl}/blog`,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ]
 }

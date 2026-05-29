@@ -41,6 +41,8 @@ export const metadata: Metadata = {
     canonical: siteUrl,
     languages: {
       'es-MX': siteUrl,
+      'en': siteUrl,
+      'x-default': siteUrl,
     },
   },
   openGraph: {
@@ -81,7 +83,6 @@ const organizationSchema = {
   image: ogImage,
   description:
     'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015. 19 propiedades canonicas, 28 listings activos.',
-  founder: 'Enrique Miceli',
   foundingDate: '2015-05',
   areaServed: [
     { '@type': 'City', name: 'Ciudad de México' },
