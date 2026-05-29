@@ -1,23 +1,14 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/blog",
-      "destination": "https://book.marimbashome.com/es/guides"
+      "destination": "https://book.marimbashome.com/es/guides",
+      "permanent": false
     },
     {
       "source": "/blog/:path*",
-      "destination": "https://book.marimbashome.com/es/guides/:path*"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/blog/:path*",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "all"
-        }
-      ]
+      "destination": "https://book.marimbashome.com/es/guides/:path*",
+      "permanent": false
     }
   ]
 }
