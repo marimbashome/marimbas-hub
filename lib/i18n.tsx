@@ -86,7 +86,7 @@ const translations: Record<string, Record<Lang, string>> = {
     es: 'El check-in fue increíblemente fácil, el departamento estaba impecable y la ubicación en Condesa es perfecta. Ya reservamos para volver en diciembre.',
     en: 'The check-in was incredibly easy, the apartment was spotless and the Condesa location is perfect. We already booked to come back in December.',
   },
-  t1_author: { es: '— Huésped en Condesa. 4, noviembre 2025', en: '— Guest at Condesa. 4, November 2025' },
+  t1_author: { es: '— Huésped en Condesa, noviembre 2025', en: '— Guest at Condesa, November 2025' },
   t2_quote: {
     es: 'Nos encantó la casa en Tuxtla. Llegamos tarde y no hubo ningún problema con el acceso. Todo limpio, bien equipado, y el equipo siempre atento por WhatsApp.',
     en: 'We loved the house in Tuxtla. We arrived late and had no issues with access. Everything clean, well-equipped, and the team always responsive on WhatsApp.',
@@ -206,7 +206,7 @@ const translations: Record<string, Record<Lang, string>> = {
   footer_checkin: { es: 'Check-in', en: 'Check-in' },
   footer_minibar: { es: 'Minibar', en: 'Minibar' },
   footer_contact: { es: 'Contacto', en: 'Contact' },
-  footer_copy: { es: '© 2015–2026 Marimbas Home. Todos los derechos reservados.', en: '© 2015–2026 Marimbas Home. All rights reserved.' },
+  footer_copy: { es: `© 2015–${new Date().getFullYear()} Marimbas Home. Todos los derechos reservados.`, en: `© 2015–${new Date().getFullYear()} Marimbas Home. All rights reserved.` },
 }
 
 interface I18nContextType {

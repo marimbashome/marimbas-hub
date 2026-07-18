@@ -42,12 +42,12 @@ export default function Hero() {
           </div>
           <div className="trust-divider" aria-hidden="true" />
           <div className="trust-item">
-            <div className="trust-num">10</div>
+            <div className="trust-num">{new Date().getFullYear() - 2015}</div>
             <div className="trust-label">{t('trust2_label')}</div>
           </div>
           <div className="trust-divider" aria-hidden="true" />
           <div className="trust-item">
-            <div className="trust-num">28</div>
+            <div className="trust-num">27</div>
             <div className="trust-label">{t('trust3_label')}</div>
           </div>
         </div>

@@ -82,7 +82,7 @@ const organizationSchema = {
   logo: `${siteUrl}/opengraph-image`,
   image: ogImage,
   description:
-    'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015. 19 propiedades canonicas, 28 listings activos.',
+    'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015. 18 propiedades canónicas, 27 listings activos.',
   foundingDate: '2015-05',
   areaServed: [
     { '@type': 'City', name: 'Ciudad de México' },
@@ -143,12 +143,6 @@ export default function RootLayout({
             gtag('config', 'G-Q1NXNXMPMS');
           `}
         </Script>
-        {/* AdSense */}
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5779958677522085"
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-        />
       </body>
     </html>
   )

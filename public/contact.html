@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contacta a Marimbas Home — hospedajes auténticos en CDMX y Chiapas. WhatsApp, email, teléfono disponibles.">
-  <meta name="google-adsense-account" content="ca-pub-5779958677522085">
   <link rel="canonical" href="https://marimbashome.com/contact.html">
   <meta property="og:title" content="Contacto — Marimbas Home">
   <meta property="og:description" content="Contacta a Marimbas Home — hospedajes auténticos en CDMX y Chiapas. WhatsApp, email, teléfono disponibles.">
@@ -550,13 +549,13 @@
     <div class="contact-card">
       <h3 class="es">Teléfono</h3>
       <h3 class="en" style="display:none">Phone</h3>
-      <div class="contact-info">+52 961 100 0000</div>
+      <div class="contact-info">+52 55 8035 8880</div>
       <p class="es">Lun–Sáb, 9am–8pm CDMX</p>
       <p class="en" style="display:none">Mon–Sat, 9am–8pm CDMX</p>
-      <span class="btn btn-slate">
+      <a href="tel:+525580358880" class="btn btn-slate">
         <span class="es">Llamar ahora</span>
         <span class="en" style="display:none">Call now</span>
-      </span>
+      </a>
     </div>
   </div>
 </section>
@@ -669,8 +668,8 @@
   </div>
   
   <div class="footer-bottom">
-    <p class="es">© 2015–2026 Marimbas Home. Todos los derechos reservados.</p>
-    <p class="en" style="display:none">© 2015–2026 Marimbas Home. All rights reserved.</p>
+    <p class="es">© 2015–<span class="copyright-year">2026</span> Marimbas Home. Todos los derechos reservados.</p>
+    <p class="en" style="display:none">© 2015–<span class="copyright-year">2026</span> Marimbas Home. All rights reserved.</p>
   </div>
 </footer>
 
@@ -703,6 +702,11 @@
     if (saved === 'en') {
       document.body.classList.add('en');
     }
+  });
+
+  // Keep footer copyright year current
+  document.querySelectorAll('.copyright-year').forEach((el) => {
+    el.textContent = new Date().getFullYear();
   });
 </script>
 

@@ -1,5 +1,5 @@
 // Cross-cutting rollout 2026-05 — security headers wired in.
-// CSP starts in Report-Only mode (lib/security-headers.js).
+// CSP is enforced (lib/security-headers.js) — see file header for audit history.
 const securityHeaders = require('./lib/security-headers')
 
 /** @type {import('next').NextConfig} */
