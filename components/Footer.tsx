@@ -17,7 +17,7 @@ export default function Footer() {
         <ul className="footer-links">
           <li><a href="https://book.marimbashome.com">{t('footer_book')}</a></li>
           <li><a href="https://guestapp.marimbashome.com">{t('footer_checkin')}</a></li>
-          <li><a href="https://minibar.marimbashome.com">{t('footer_minibar')}</a></li>
+          <li><a href="mailto:enrique@marimbashome.com?subject=Minibar%20Digital">{t('footer_minibar')}</a></li>
           <li><a href="mailto:reservas@marimbashome.com">{t('footer_contact')}</a></li>
           <li>
             <a href="https://www.instagram.com/marimbashome" target="_blank" rel="noopener noreferrer" style={{display:'flex',alignItems:'center',gap:'6px'}}>

@@ -6,7 +6,7 @@ import ArrowIcon from './ArrowIcon'
 
 const products = [
   { icon: '📱', bg: 'rgba(198,123,92,0.15)', img: '/images/prod-guestapp.jpg', live: true, title: 'ga_title', forL: 'ga_for', desc: 'ga_p', btn: 'ga_btn', href: 'https://guestapp.marimbashome.com', tags: ['Check-in digital','Verificación ID','Guía de llegada','Multi-idioma'] },
-  { icon: '🍷', bg: 'rgba(74,111,165,0.15)', img: '/images/prod-minibar.jpg', live: true, title: 'mb_title', forL: 'mb_for', desc: 'mb_p', btn: 'mb_btn', href: 'https://minibar.marimbashome.com', tags: ['Catálogo personalizable','Pedidos en tiempo real','Multi-pago'] },
+  { icon: '🍷', bg: 'rgba(74,111,165,0.15)', img: '/images/prod-minibar.jpg', live: false, title: 'mb_title', forL: 'mb_for', desc: 'mb_p', btn: 'mb_btn', href: 'mailto:enrique@marimbashome.com?subject=Minibar%20Digital', tags: ['Catálogo personalizable','Pedidos en tiempo real','Multi-pago'] },
   { icon: '📊', bg: 'rgba(150,206,180,0.15)', img: '/images/prod-dashboard.jpg', live: false, title: 'ad_title', forL: 'ad_for', desc: 'ad_p', btn: 'ad_btn', href: 'mailto:enrique@marimbashome.com?subject=Admin%20Dashboard', tags: ['Revenue en tiempo real','Reportes financieros','Multi-canal'] },
   { icon: '🧹', bg: 'rgba(61,107,53,0.15)', img: '/images/prod-cleanbot.jpg', live: false, title: 'cb_title', forL: 'cb_for', desc: 'cb_p', btn: 'cb_btn', href: 'mailto:enrique@marimbashome.com?subject=CleanBot', tags: ['WhatsApp nativo','Asignación automática','Multi-propiedad'] },
 ]
