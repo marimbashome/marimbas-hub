@@ -1,8 +1,7 @@
 {
-  "_comment": "Marimbas cross-cutting rollout 2026-05. Thresholds intentionally lenient for first run; raise after baseline.",
+  "_comment": "Marimbas cross-cutting rollout 2026-05. Thresholds intentionally lenient for first run; raise after baseline. La URL NO va aqui: lhci no interpola variables de entorno dentro de un config JSON, asi que \"${LHCI_TARGET_URL}\" se tomaba como URL literal y el paso moria con INVALID_URL. Entra por --collect.url desde el workflow.",
   "ci": {
     "collect": {
-      "url": ["${LHCI_TARGET_URL}"],
       "numberOfRuns": 1,
       "settings": {
         "preset": "desktop",
