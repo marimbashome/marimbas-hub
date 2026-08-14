@@ -1,13 +1,17 @@
 # Marimbas cross-cutting rollout 2026-05 — Lighthouse CI
-# This workflow runs read-only audits on every PR's Vercel preview deploy.
-# It does NOT touch production. It does NOT block merges (mode: warn).
+# 2026-05-25: trigger cambiado de deployment_status (cada preview) a schedule semanal
+# + workflow_dispatch, para recortar minutos de GitHub Actions. Audita produccion. Warn-only.
 #
-# To make it block merges later, change `continue-on-error: true` → `false`.
+# 2026-08-14 — ARREGLO: este workflow nunca midio nada. La URL se declaraba dentro de
+# lighthouserc.json como "${LHCI_TARGET_URL}", pero lhci NO interpola variables de entorno
+# dentro de un config JSON: recibia esa cadena literal y moria con INVALID_URL. 72 de 72
+# corridas ejecutadas fallaron en 7 repos. La URL ahora entra por bandera --collect.url.
 
 name: Lighthouse CI
 
 on:
-  deployment_status: {}
+  schedule:
+    - cron: '45 12 * * 1'
   workflow_dispatch: {}
 
 permissions:
@@ -16,10 +20,9 @@ permissions:
 
 jobs:
   lighthouse:
-    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Preview'
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    continue-on-error: true   # WARN-only mode for the first month. Switch to false after baseline established.
+    continue-on-error: true   # WARN-only
 
     steps:
       - uses: actions/checkout@v4
@@ -31,13 +34,47 @@ jobs:
       - name: Install Lighthouse CI
         run: npm i -g @lhci/cli@0.14.x
 
-      - name: Run Lighthouse against preview URL
+      - name: Run Lighthouse against production URL
         env:
-          LHCI_TARGET_URL: ${{ github.event.deployment_status.target_url }}
+          LHCI_TARGET_URL: https://www.marimbashome.com
+          VERCEL_BYPASS: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: |
-          if [ -f lighthouserc.json ]; then
-            lhci autorun --config=./lighthouserc.json
-          else
+          set -euo pipefail
+
+          if [ ! -f lighthouserc.json ]; then
             echo "No lighthouserc.json found at repo root; skipping."
             exit 0
           fi
+
+          # 1) Sin URL no hay nada que medir. Fallar aqui, nunca seguir en silencio.
+          if [ -z "${LHCI_TARGET_URL:-}" ]; then
+            echo "::error::LHCI_TARGET_URL viene vacia; no hay pagina que medir."
+            exit 1
+          fi
+
+          # 2) Si el repo tiene el secreto de excepcion de Vercel, se usa para entrar.
+          LHCI_ARGS=(--collect.url="$LHCI_TARGET_URL" --config=./lighthouserc.json)
+          CURL_ARGS=(-sSL -o /dev/null -w '%{url_effective}')
+          if [ -n "${VERCEL_BYPASS:-}" ]; then
+            LHCI_ARGS+=(--collect.settings.extraHeaders="{\"x-vercel-protection-bypass\":\"${VERCEL_BYPASS}\"}")
+            CURL_ARGS+=(-H "x-vercel-protection-bypass: ${VERCEL_BYPASS}")
+            echo "Usando la excepcion de proteccion de Vercel."
+          fi
+
+          # 3) Guardarrail: comprobar que la URL sirve LA APP y no un muro de acceso.
+          #    Sin esto, Lighthouse mide la pantalla de login y devuelve puntajes altos
+          #    y reales de la pagina equivocada: un verde que miente.
+          FINAL_URL=$(curl "${CURL_ARGS[@]}" "$LHCI_TARGET_URL" || echo "")
+          case "$FINAL_URL" in
+            *vercel.com/login*|*sso-api*)
+              echo "::error::La pagina esta protegida y manda a la pantalla de acceso de Vercel ($FINAL_URL). Lighthouse mediria esa pantalla y no la app. Para medir previews: activar 'Protection Bypass for Automation' en el proyecto de Vercel y guardar el valor como secreto VERCEL_AUTOMATION_BYPASS_SECRET en este repo."
+              exit 1
+              ;;
+            "")
+              echo "::error::No se pudo abrir $LHCI_TARGET_URL para comprobar que responde."
+              exit 1
+              ;;
+          esac
+
+          echo "Midiendo: $LHCI_TARGET_URL (responde en: $FINAL_URL)"
+          lhci autorun "${LHCI_ARGS[@]}"
