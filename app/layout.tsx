@@ -15,7 +15,10 @@ const inter = Inter({
   display: 'swap',
 })
 
-const siteUrl = 'https://marimbashome.com'
+// Con www: el ápice responde 307 y manda aquí. Apuntar el canónico, los
+// idiomas alternos y el mapa del sitio a una dirección que primero redirige
+// diluye la señal en vez de declarar el destino final.
+const siteUrl = 'https://www.marimbashome.com'
 const ogImage = `${siteUrl}/opengraph-image`
 
 export const metadata: Metadata = {
@@ -39,9 +42,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl,
+    // Sin alternante 'en': apuntaba a esta misma dirección, que desde el
+    // servidor solo sirve español (el cambio de idioma es un botón que actúa en
+    // el navegador y nunca cambia la URL). Declarar una traducción que los
+    // buscadores no pueden ver es una promesa falsa; se declara lo que hay.
     languages: {
       'es-MX': siteUrl,
-      'en': siteUrl,
       'x-default': siteUrl,
     },
   },
@@ -82,7 +88,9 @@ const organizationSchema = {
   logo: `${siteUrl}/opengraph-image`,
   image: ogImage,
   description:
-    'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015. 18 propiedades canónicas, 27 listings activos.',
+    // Sin cifras a mano: este texto no se puede derivar aquí y un número
+    // escrito se pudre en semanas (decía 28, luego 27, y la base iba en 25).
+    'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015.',
   foundingDate: '2015-05',
   areaServed: [
     { '@type': 'City', name: 'Ciudad de México' },
