@@ -4,7 +4,7 @@ import { useI18n } from '@/lib/i18n'
 import ArrowIcon from './ArrowIcon'
 import FadeUp from './FadeUp'
 
-export default function Hero() {
+export default function Hero({ propiedades }: { propiedades: number }) {
   const { t } = useI18n()
   return (
     <section className="hero">
@@ -47,7 +47,7 @@ export default function Hero() {
           </div>
           <div className="trust-divider" aria-hidden="true" />
           <div className="trust-item">
-            <div className="trust-num">27</div>
+            <div className="trust-num">{propiedades}</div>
             <div className="trust-label">{t('trust3_label')}</div>
           </div>
         </div>

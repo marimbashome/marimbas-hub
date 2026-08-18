@@ -33,9 +33,11 @@ export default function Experience() {
               </div>
               <h3>{t('exp2_h')}</h3>
               <p>{t('exp2_p')}</p>
-              <a href="https://minibar.marimbashome.com" className="exp-link">
-                {t('exp2_link')} <ArrowIcon />
-              </a>
+              {/* Sin enlace a propósito: minibar.marimbashome.com no existe en
+                  el DNS y quien lo tocaba caía en un error del navegador, no en
+                  una página. Products.tsx y el pie ya se habían corregido en
+                  julio; este quedó suelto. Dónde vive Minibar de cara al público
+                  es una decisión abierta — cuando exista, el enlace vuelve. */}
             </div>
           </FadeUp>
           <FadeUp delay={3}>
