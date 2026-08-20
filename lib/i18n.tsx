@@ -116,28 +116,28 @@ const translations: Record<string, Record<Lang, string>> = {
   prod_bottom_post: { es: ' Cada producto funciona de forma independiente — activa solo lo que necesites.', en: ' Each product works independently — activate only what you need.' },
   prod_bottom_btn: { es: 'Contactar al Equipo', en: 'Contact the Team' },
   // Products - cards
-  ga_title: { es: 'Guest App', en: 'Guest App' },
+  ga_title: { es: 'Guest App by Marimbas Home', en: 'Guest App by Marimbas Home' },
   ga_for: { es: 'Para huéspedes · Plug & Play', en: 'For guests · Plug & Play' },
   ga_p: {
     es: 'Check-in digital, verificación de identidad, instrucciones de llegada y acceso a servicios. Tu huésped llega, abre y listo.',
     en: 'Digital check-in, ID verification, arrival instructions and service access. Your guest arrives, opens and done.',
   },
   ga_btn: { es: 'Ver Demo', en: 'See Demo' },
-  mb_title: { es: 'Minibar Digital', en: 'Digital Minibar' },
+  mb_title: { es: 'Minibar by Marimbas Home', en: 'Minibar by Marimbas Home' },
   mb_for: { es: 'Para huéspedes · Genera ingreso extra', en: 'For guests · Extra revenue' },
   mb_p: {
     es: 'Catálogo de productos por propiedad. El huésped pide desde su celular, tú generas revenue adicional sin inventario fijo.',
     en: 'Product catalog per property. Guest orders from their phone, you generate additional revenue with no fixed inventory.',
   },
   mb_btn: { es: 'Ver Demo', en: 'See Demo' },
-  ad_title: { es: 'Admin Dashboard', en: 'Admin Dashboard' },
+  ad_title: { es: 'Marimbas Home / STROPS', en: 'Marimbas Home / STROPS' },
   ad_for: { es: 'Para administradores · Control total', en: 'For admins · Full control' },
   ad_p: {
     es: 'Revenue, ocupación y métricas en un solo lugar. Ve cómo rinden tus propiedades sin abrir cinco plataformas distintas.',
     en: 'Revenue, occupancy and metrics in one place. See how your properties perform without opening five different platforms.',
   },
   ad_btn: { es: 'Solicitar Acceso', en: 'Request Access' },
-  cb_title: { es: 'CleanBot', en: 'CleanBot' },
+  cb_title: { es: 'Rumae', en: 'Rumae' },
   cb_for: { es: 'Para operaciones · Automatización', en: 'For operations · Automation' },
   cb_p: {
     es: 'Coordina limpieza automáticamente con cada check-out vía WhatsApp. Asigna turnos, notifica y confirma con foto.',
