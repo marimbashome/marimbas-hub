@@ -362,7 +362,7 @@ body {
 .exp-card p { font-size: 14px; color: var(--charcoal-light); line-height: 1.75; margin-bottom: 16px; position: relative; }
 .exp-link {
     display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13px; font-weight: 600; color: var(--slate);
+    font-size: 13px; font-weight: 600; color: var(--slate-dark);
     text-decoration: none; transition: gap var(--transition); position: relative;
 }
 .exp-link:hover { gap: 10px; }
@@ -604,7 +604,7 @@ body {
 .owner-check {
     width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
     background: linear-gradient(135deg, rgba(74,124,89,0.18), rgba(74,124,89,0.08));
-    color: var(--chiapas);
+    color: var(--slate-dark);
     display: flex; align-items: center; justify-content: center;
     font-size: 13px; font-weight: 700; margin-top: 1px;
     box-shadow: 0 2px 8px rgba(74,124,89,0.1);
