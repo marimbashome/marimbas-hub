@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="footer-inner">
         <div>
           <div className="footer-brand">
-            <LogoIcon size={28} />
+            <LogoIcon size={28} onDark />
             <span className="footer-brand-text">Marimbas Home</span>
           </div>
           <div className="footer-sub">{t('footer_sub')}</div>
