@@ -17,7 +17,7 @@ export default function Owners() {
       <div className="owners-inner">
         <FadeUp className="owners-grid">
           <div>
-            <div className="section-label" style={{ color: 'var(--chiapas)' }}>{t('own_label')}</div>
+            <div className="section-label" style={{ color: 'var(--slate-dark)' }}>{t('own_label')}</div>
             <h2>{t('own_title')}</h2>
             <p className="section-desc" style={{ marginBottom: 32 }}>{t('own_desc')}</p>
             <a href="https://propietarios.marimbashome.com" className="btn btn-slate">

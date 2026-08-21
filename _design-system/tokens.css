@@ -1,37 +1,38 @@
 /* ============================================================
    MARIMBAS HOME — Design Tokens (CSS Custom Properties)
    Source of truth for the entire Marimbas ecosystem.
-   Last updated: 2026-03-19
+   Last updated: 2026-08-20 (paleta canónica de mayo-2026)
    ============================================================ */
 
 :root {
   /* ── Core Brand Colors ─────────────────────────────── */
-  --m-deep-forest: #1B3A1A;
-  --m-chiapas-green: #3D6B35;
-  --m-chiapas-green-light: #4A7E40;
-  --m-amber-warm: #C9A96E;
-  --m-terracotta: #C67B5C;
-  --m-terracotta-light: #D4927A;
+  --m-deep-forest: #1e3a2f;
+  --m-chiapas-green: #4a7c59;
+  --m-chiapas-green-light: #5d9370;
+  --m-amber-warm: #d4a04a;
+  --m-terracotta: #c26a4f;
+  --m-terracotta-light: #d18b74;
   --m-adobe: #8B6F47;
 
   /* ── Neutrals ──────────────────────────────────────── */
-  --m-linen: #F5F0E8;
-  --m-sand: #E8DFD1;
-  --m-cream: #FAF7F2;
-  --m-charcoal: #2C2C2C;
-  --m-charcoal-light: #4A4A4A;
-  --m-muted: #8B8B8B;
+  --m-linen: #f4ede1;
+  --m-sand: #e5dccb;
+  --m-cream: #fbf7ef;
+  --m-charcoal: #2a2420;
+  --m-charcoal-light: #4a423c;
+  --m-muted: #7a706a;
   --m-white: #FFFFFF;
 
   /* ── Accent / Functional ───────────────────────────── */
-  --m-gold: #FFD700;
-  --m-gold-muted: #D4A847;
-  --m-sage: #96CEB4;
-  --m-teal: #4ECDC4;
-  --m-coral: #E17055;
-  --m-slate: #4A6FA5;
+  --m-gold: #d4a04a;
+  --m-gold-muted: #c08f3f;
+  --m-sage: #4a7c59;
+  --m-teal: #4a7c59;
+  --m-coral: #c26a4f;
+  --m-slate: #1e3a2f;
 
   /* ── Dark Mode (admin/internal) ────────────────────── */
+  /* NO USAR: el canon Marimbas es light-only. Conservado por compatibilidad. */
   --m-dark-bg: #0d1117;
   --m-dark-card: #161b22;
   --m-dark-border: #30363d;
@@ -116,6 +117,7 @@
 }
 
 /* ── Dark Mode Override ────────────────────────────── */
+/* NO USAR: el canon Marimbas es light-only. Conservado por compatibilidad. */
 [data-theme="dark"],
 .dark {
   --m-surface-primary: var(--m-dark-bg);
