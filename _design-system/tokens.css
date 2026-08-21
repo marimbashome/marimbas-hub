@@ -1,7 +1,7 @@
 /* ============================================================
    MARIMBAS HOME — Design Tokens (CSS Custom Properties)
    Source of truth for the entire Marimbas ecosystem.
-   Last updated: 2026-08-20 (paleta canónica de mayo-2026)
+   Last updated: 2026-08-21 (unificación de las copias divergentes)
    ============================================================ */
 
 :root {
@@ -23,16 +23,30 @@
   --m-muted: #7a706a;
   --m-white: #FFFFFF;
 
+  /* ── Alias canónicos (mayo-2026) — mismos valores, nombres del canon ── */
+  --m-paper: var(--m-cream);   /* #fbf7ef */
+  --m-ink: var(--m-charcoal);  /* #2a2420 */
+  --m-line: var(--m-sand);     /* #e5dccb */
+  --m-amber: var(--m-amber-warm); /* #d4a04a */
+
   /* ── Accent / Functional ───────────────────────────── */
   --m-gold: #d4a04a;
   --m-gold-muted: #c08f3f;
-  --m-sage: #4a7c59;
-  --m-teal: #4a7c59;
+  /* Tono para LETRA: el ámbar de marca da 2.35:1 sobre blanco y el 'muted'
+     2.90:1 — ninguno se puede leer. Mismo matiz con la luminosidad bajada a
+     32%, el punto en que pasa 4.5:1 sobre todos los fondos reales. */
+  --m-gold-deep: #845e1f;
+  /* sage y teal son alias históricos de DOS roles distintos: sage = éxito,
+     teal = información. Estuvieron los dos en #4a7c59, así que --m-success y
+     --m-info eran literalmente el mismo color y un aviso de «listo» no se
+     distinguía de uno de «para tu información». Cada uno vuelve a su tono del
+     canon, igual que en tailwind-preset.ts. */
+  --m-sage: #4a7c59; /* éxito — chiapas-green */
+  --m-teal: #1e3a2f; /* información — deep-forest */
   --m-coral: #c26a4f;
   --m-slate: #1e3a2f;
 
   /* ── Dark Mode (admin/internal) ────────────────────── */
-  /* NO USAR: el canon Marimbas es light-only. Conservado por compatibilidad. */
   --m-dark-bg: #0d1117;
   --m-dark-card: #161b22;
   --m-dark-border: #30363d;
@@ -117,7 +131,6 @@
 }
 
 /* ── Dark Mode Override ────────────────────────────── */
-/* NO USAR: el canon Marimbas es light-only. Conservado por compatibilidad. */
 [data-theme="dark"],
 .dark {
   --m-surface-primary: var(--m-dark-bg);
