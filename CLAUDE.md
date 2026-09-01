@@ -5,7 +5,7 @@
 
 ---
 
-<!-- BEGIN REGLA-ATRIBUCION sha=68fe22937ee9 · generado por Codigo/scripts/sync-regla-atribucion.py · NO editar a mano -->
+<!-- BEGIN REGLA-ATRIBUCION sha=5de622671bcb · generado por Codigo/scripts/sync-regla-atribucion.py · NO editar a mano -->
 ## 🧾 Bitácora con autor — regla dura de todos los repos
 
 Todo cambio deja rastro, y **el rastro dice quién lo hizo**, distinguiendo una IA de una persona.
@@ -46,6 +46,15 @@ otro lo commiteó, **se nombran los dos**. Atribuir a quien no lo escribió es p
 Es el mismo vocabulario en los trailers del commit y en las columnas de actor de la base
 (`audit_log.changed_by`, `decision_log.actor`, `cron_change_log.actor`). Sin vocabulario único no
 se puede agrupar, y sin agrupar no hay auditoría: se midió «claude» escrito de 10 formas distintas.
+
+🔒 **En la bitácora de decisiones ya es candado, no recomendación (2026-09-01).**
+`fn_decision_log_write` **rechaza** la llamada sin `p_actor` y rechaza cualquier valor que no
+empiece con uno de los cuatro prefijos; una restricción `CHECK` en `decision_log` cierra las
+demás vías. Antes el parámetro existía pero tenía valor por omisión `'claude'`, y 207 decisiones
+quedaron sin autor real — **un candado con valor por omisión permisivo no es un candado**, la
+misma forma que `Deno.env.get('MH_ADMIN_TOKEN') || ''`. Las otras funciones con actor
+(`fn_cron_set_active`, `fn_tablero_create_task`, `fn_context_page_upsert`…) **todavía** tienen el
+valor por omisión abierto: pásales el actor a mano hasta que se cierren igual.
 
 ### 3. Qué más lleva cada entrada
 
