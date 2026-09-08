@@ -148,7 +148,10 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-Q1NXNXMPMS');
+            // Analítica sin cookies ni almacenamiento de dispositivo: no requiere
+            // banner de consentimiento (LFPDPPP/RGPD) porque no identifica ni sigue
+            // al visitante — solo cuentas agregadas. Detalle en /privacidad §8.
+            gtag('config', 'G-Q1NXNXMPMS', { client_storage: 'none' });
           `}
         </Script>
       </body>
