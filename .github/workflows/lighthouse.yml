@@ -41,8 +41,12 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Sin config no hay medicion. Antes esto salia como texto normal y el paso
+          # quedaba en verde: un repo que pierde su lighthouserc.json deja de medirse
+          # PARA SIEMPRE y la corrida semanal sigue diciendo que todo bien. Ahora deja
+          # anotacion visible en el resumen de la corrida, que es donde se mira.
           if [ ! -f lighthouserc.json ]; then
-            echo "No lighthouserc.json found at repo root; skipping."
+            echo "::warning::No hay lighthouserc.json en la raiz: este repo NO se esta midiendo con Lighthouse. Si es a proposito, retirar este workflow; si no, agregar el config."
             exit 0
           fi
 
