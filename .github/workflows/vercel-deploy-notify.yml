@@ -38,6 +38,28 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      # El candado se prueba a si mismo antes de usarse. Siembra el caso que el
+      # cambio del 2026-09-17 arregla: un despliegue que SOLO trae `readyState`
+      # (sin `state`) y esta en ERROR. Si el armador del mensaje volviera a leer
+      # `.state` a secas, a Slack llegaria `deploy_state: null` y este paso se
+      # pone rojo. Corre en segundos y solo cuando el job ya iba a correr.
+      - name: Autoprueba del armador del mensaje
+        run: |
+          set -euo pipefail
+          FIXTURE='{"uid":"dpl_prueba","url":"prueba.vercel.app","readyState":"ERROR","meta":{"githubCommitMessage":"m","githubCommitAuthorName":"a"}}'
+          STATE=$(echo "$FIXTURE" | jq -r '.state // .readyState // "UNKNOWN"')
+          OUT=$(echo "$FIXTURE" | jq -r --arg repo r --arg sha s --arg state "$STATE" \
+            '{repo: $repo, commit_sha: $sha,
+              commit_message: (.meta.githubCommitMessage // ""),
+              commit_author: (.meta.githubCommitAuthorName // ""),
+              deploy_id: (.uid // .id), deploy_state: $state, deploy_url: .url,
+              inspector_url: (.inspectorUrl // "")} | .deploy_state')
+          if [ "$OUT" != "ERROR" ]; then
+            echo "::error::Autoprueba: un deploy con solo readyState=ERROR produjo deploy_state='$OUT' (se esperaba ERROR). El aviso a Slack mentiria sobre el estado."
+            exit 1
+          fi
+          echo "Autoprueba OK: readyState=ERROR sin 'state' llega como deploy_state=ERROR."
+
       - name: Check Vercel deploy state and alert Slack if ERROR
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -51,15 +73,25 @@ jobs:
 
           # One call — the deploy is already in a terminal state when this runs.
           RESP=$(curl -s -H "Authorization: Bearer $VERCEL_TOKEN" \
-            "https://api.vercel.com/v6/deployments?teamId=$TEAM_ID&projectId=$PROJECT_ID&limit=20")
+            "https://api.vercel.com/v6/deployments?teamId=$TEAM_ID&projectId=$PROJECT_ID&limit=100")
 
           # Find the deployment matching this commit SHA.
           DEPLOY=$(echo "$RESP" | jq -c --arg sha "$SHA" \
             'first(.deployments[] | select(.meta.githubCommitSha == $sha)) // empty')
 
           if [ -z "$DEPLOY" ]; then
-            echo "::warning::No Vercel deployment matched SHA $SHA — no alert sent."
-            exit 0
+            # Un canario que no encuentra la jaula NO puede salir en verde. En un
+            # `deployment_status` real este camino significa que hubo un deploy y no
+            # supimos su estado: justo el silencio que este workflow existe para
+            # romper. Se pone rojo para que se vea en la pestana Actions.
+            # En el arranque a mano (workflow_dispatch) sigue siendo aviso: ahi es
+            # normal que el HEAD del momento no tenga deploy propio.
+            if [ "${GITHUB_EVENT_NAME:-}" = "workflow_dispatch" ]; then
+              echo "::warning::No Vercel deployment matched SHA $SHA (prueba manual) — no alert sent."
+              exit 0
+            fi
+            echo "::error::Hubo un deployment_status pero ningun despliegue de Vercel coincide con SHA $SHA en los ultimos 100. No se pudo saber si fallo."
+            exit 1
           fi
 
           STATE=$(echo "$DEPLOY" | jq -r '.state // .readyState // "UNKNOWN"')
@@ -73,15 +105,23 @@ jobs:
           # Build the payload exactly like the previous workflow (same edge-function
           # contract). Commit message/author come from Vercel meta because the
           # deployment_status event has no head_commit. jq handles escaping safely.
+          # `deploy_state` sale de $STATE, que es el valor que ESTE workflow ya evaluo
+          # arriba con su cadena de respaldo. Antes se volvia a leer `.state` a secas:
+          # medido el 2026-09-17 contra la API real, hoy v6 devuelve `state` y
+          # `readyState` iguales en los 84 despliegues del proyecto, asi que no falla —
+          # pero el dia que Vercel deje solo `readyState` (el nombre canonico), la
+          # alerta se disparaba por ERROR y a Slack llegaba deploy_state: null.
+          # Un solo origen para el estado: el que se juzgo es el que se reporta.
           PAYLOAD=$(echo "$DEPLOY" | jq \
             --arg repo "$REPO" \
             --arg sha "$SHA" \
+            --arg state "$STATE" \
             '{repo: $repo,
               commit_sha: $sha,
               commit_message: (.meta.githubCommitMessage // ""),
               commit_author: (.meta.githubCommitAuthorName // ""),
               deploy_id: (.uid // .id),
-              deploy_state: .state,
+              deploy_state: $state,
               deploy_url: .url,
               inspector_url: (.inspectorUrl // "")}')
 
