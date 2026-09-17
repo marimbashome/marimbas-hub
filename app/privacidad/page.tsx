@@ -69,7 +69,7 @@ const secciones: { titulo: string; parrafos: (string | string[])[] }[] = [
   {
     titulo: '8. Cookies y analítica',
     parrafos: [
-      'Este sitio utiliza Google Analytics 4 con almacenamiento de cookies desactivado (client_storage: none): las visitas se cuentan de forma agregada y no se usan cookies publicitarias ni de seguimiento.',
+      'Este sitio utiliza Google Analytics 4 en modo sin cookies: el consentimiento de almacenamiento analítico y publicitario se manda denegado por omisión (Consent Mode), así que la medición viaja en solicitudes agregadas y no se escriben cookies de analítica, de seguimiento ni publicitarias.',
       'Por esa configuración, este sitio no requiere banner de consentimiento de cookies para su analítica.',
     ],
   },
@@ -83,7 +83,7 @@ const secciones: { titulo: string; parrafos: (string | string[])[] }[] = [
 
 export default function PrivacidadPage() {
   return (
-    <main style={{ minHeight: '100vh', background: 'var(--sand, #f4ede1)', padding: '48px 24px' }}>
+    <main style={{ minHeight: '100vh', background: 'var(--linen, #f4ede1)', padding: '48px 24px' }}>
       <div style={{ maxWidth: 760, margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
           <LogoIcon size={36} />
@@ -94,7 +94,7 @@ export default function PrivacidadPage() {
         <h1 style={{ fontFamily: 'var(--font-serif, Georgia, serif)', fontSize: '2rem', color: 'var(--deep-forest, #1e3a2f)', marginBottom: 8 }}>
           Aviso de Privacidad Integral
         </h1>
-        <p style={{ color: 'var(--muted, #6b6b5f)', fontSize: 14, marginBottom: 40 }}>
+        <p style={{ color: 'var(--charcoal-light, #4a423c)', fontSize: 14, marginBottom: 40 }}>
           Última actualización: 16 de junio de 2026 (v3)
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
@@ -114,7 +114,7 @@ export default function PrivacidadPage() {
           ))}
         </div>
         <div style={{ marginTop: 48, paddingTop: 24, borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-          <Link href="/" style={{ color: 'var(--copper, #c26a4f)', fontWeight: 600 }}>
+          <Link href="/" style={{ color: 'var(--copper-dark, #a55540)', fontWeight: 600 }}>
             ← Volver a marimbashome.com
           </Link>
         </div>
