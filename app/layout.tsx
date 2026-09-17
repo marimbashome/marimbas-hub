@@ -147,10 +147,20 @@ export default function RootLayout({
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
             // Analítica sin cookies ni almacenamiento de dispositivo: no requiere
             // banner de consentimiento (LFPDPPP/RGPD) porque no identifica ni sigue
             // al visitante — solo cuentas agregadas. Detalle en /privacidad §8.
+            //
+            // El modo de consentimiento va ANTES de 'config': con analytics_storage
+            // en 'denied' GA4 manda pings sin cookies (medido 2026-09-17: con solo
+            // client_storage:'none' el sitio seguia escribiendo _ga y _ga_<ID>).
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+            });
+            gtag('js', new Date());
             gtag('config', 'G-Q1NXNXMPMS', { client_storage: 'none' });
           `}
         </Script>
