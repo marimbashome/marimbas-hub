@@ -46,8 +46,9 @@ jobs:
           # PARA SIEMPRE y la corrida semanal sigue diciendo que todo bien. Ahora deja
           # anotacion visible en el resumen de la corrida, que es donde se mira.
           if [ ! -f lighthouserc.json ]; then
-            echo "::warning::No hay lighthouserc.json en la raiz: este repo NO se esta midiendo con Lighthouse. Si es a proposito, retirar este workflow; si no, agregar el config."
-            exit 0
+            # 2026-09-17: un config ausente es un error del paso, no una advertencia de texto -- exit 1 en vez de exit 0.
+            echo "::error::No hay lighthouserc.json en la raiz: este repo NO se esta midiendo con Lighthouse. Si es a proposito, retirar este workflow; si no, agregar el config."
+            exit 1
           fi
 
           # 1) Sin URL no hay nada que medir. Fallar aqui, nunca seguir en silencio.
