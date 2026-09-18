@@ -71,13 +71,34 @@ jobs:
         run: |
           set -e
 
-          # One call — the deploy is already in a terminal state when this runs.
-          RESP=$(curl -s -H "Authorization: Bearer $VERCEL_TOKEN" \
-            "https://api.vercel.com/v6/deployments?teamId=$TEAM_ID&projectId=$PROJECT_ID&limit=100")
+          # 2026-09-17: sigue pagination.next de la API de Vercel en vez de un
+          # limite fijo (antes limit=100 sin loop) — cierra el caso de mas de 100
+          # deploys entre el evento y esta corrida. Tope de 10 paginas (~1000 deploys).
+          DEPLOY=""
+          UNTIL=""
+          PAGES_CHECKED=0
+          for i in $(seq 1 10); do
+            URL="https://api.vercel.com/v6/deployments?teamId=$TEAM_ID&projectId=$PROJECT_ID&limit=100"
+            if [ -n "$UNTIL" ]; then
+              URL="${URL}&until=${UNTIL}"
+            fi
+            RESP=$(curl -s -H "Authorization: Bearer $VERCEL_TOKEN" "$URL")
+            PAGES_CHECKED=$i
 
-          # Find the deployment matching this commit SHA.
-          DEPLOY=$(echo "$RESP" | jq -c --arg sha "$SHA" \
-            'first(.deployments[] | select(.meta.githubCommitSha == $sha)) // empty')
+            # Find the deployment matching this commit SHA.
+            DEPLOY=$(echo "$RESP" | jq -c --arg sha "$SHA" \
+              'first(.deployments[] | select(.meta.githubCommitSha == $sha)) // empty')
+
+            if [ -n "$DEPLOY" ]; then
+              break
+            fi
+
+            NEXT=$(echo "$RESP" | jq -r '.pagination.next // empty')
+            if [ -z "$NEXT" ] || [ "$NEXT" = "null" ]; then
+              break
+            fi
+            UNTIL="$NEXT"
+          done
 
           if [ -z "$DEPLOY" ]; then
             # Un canario que no encuentra la jaula NO puede salir en verde. En un
@@ -90,7 +111,7 @@ jobs:
               echo "::warning::No Vercel deployment matched SHA $SHA (prueba manual) — no alert sent."
               exit 0
             fi
-            echo "::error::Hubo un deployment_status pero ningun despliegue de Vercel coincide con SHA $SHA en los ultimos 100. No se pudo saber si fallo."
+            echo "::error::Hubo un deployment_status pero ningun despliegue de Vercel coincide con SHA $SHA en $PAGES_CHECKED pagina(s) (paginado con pagination.next). No se pudo saber si fallo."
             exit 1
           fi
 
