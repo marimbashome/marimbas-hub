@@ -15,10 +15,6 @@ export default function Channels() {
         <div className="channels-logos">
           <div className="channel-logo">airbnb</div>
           <span className="channel-sep" aria-hidden="true">·</span>
-          <div className="channel-logo">Booking<span>.com</span></div>
-          <span className="channel-sep" aria-hidden="true">·</span>
-          <div className="channel-logo">VRBO</div>
-          <span className="channel-sep" aria-hidden="true">·</span>
           <div className="channel-logo">HomeExchange</div>
           <span className="channel-sep" aria-hidden="true">·</span>
           <div className="channel-logo">marimbashome<span>.com</span></div>
