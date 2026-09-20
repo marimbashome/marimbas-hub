@@ -174,8 +174,8 @@ const translations: Record<string, Record<Lang, string>> = {
   own_btn: { es: 'Platiquemos', en: 'Let\'s Talk' },
   own1_title: { es: 'Fotografía y listings profesionales', en: 'Professional photography and listings' },
   own1_text: {
-    es: 'Tu propiedad presentada en Airbnb, Booking y canal directo con fotos que venden.',
-    en: 'Your property listed on Airbnb, Booking and direct channels with photos that sell.',
+    es: 'Tu propiedad presentada en Airbnb y canal directo con fotos que venden.',
+    en: 'Your property listed on Airbnb and direct channels with photos that sell.',
   },
   own2_title: { es: 'Precios que maximizan tu ingreso', en: 'Prices that maximize your income' },
   own2_text: {
