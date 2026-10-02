@@ -5,10 +5,10 @@ import FadeUp from './FadeUp'
 import ArrowIcon from './ArrowIcon'
 
 const products = [
-  { icon: '📱', bg: 'rgba(194,106,79,0.15)', img: '/images/prod-guestapp.jpg', live: true, title: 'ga_title', forL: 'ga_for', desc: 'ga_p', btn: 'ga_btn', href: 'https://guestapp.marimbashome.com', tags: ['Check-in digital','Verificación ID','Guía de llegada','Multi-idioma'] },
-  { icon: '🍷', bg: 'rgba(30,58,47,0.15)', img: '/images/prod-minibar.jpg', live: false, title: 'mb_title', forL: 'mb_for', desc: 'mb_p', btn: 'mb_btn', href: 'mailto:enrique@marimbashome.com?subject=Minibar%20Digital', tags: ['Catálogo personalizable','Pedidos en tiempo real','Multi-pago'] },
-  { icon: '📊', bg: 'rgba(74,124,89,0.15)', img: '/images/prod-dashboard.jpg', live: false, title: 'ad_title', forL: 'ad_for', desc: 'ad_p', btn: 'ad_btn', href: 'mailto:enrique@marimbashome.com?subject=Admin%20Dashboard', tags: ['Revenue en tiempo real','Reportes financieros','Multi-canal'] },
-  { icon: '🧹', bg: 'rgba(74,124,89,0.15)', img: '/images/prod-cleanbot.jpg', live: false, title: 'cb_title', forL: 'cb_for', desc: 'cb_p', btn: 'cb_btn', href: 'mailto:enrique@marimbashome.com?subject=Rumae', tags: ['WhatsApp nativo','Asignación automática','Multi-propiedad'] },
+  { icon: '📱', bg: 'rgba(194,106,79,0.15)', img: '/images/prod-guestapp.jpg', alt: 'Sala de un departamento de Marimbas Home con sofá y televisor', live: true, title: 'ga_title', forL: 'ga_for', desc: 'ga_p', btn: 'ga_btn', href: 'https://guestapp.marimbashome.com', tags: ['Check-in digital','Verificación ID','Guía de llegada','Multi-idioma'] },
+  { icon: '🍷', bg: 'rgba(30,58,47,0.15)', img: '/images/prod-minibar.jpg', alt: 'Tina de baño con bandeja de minibar, copas y vino en un alojamiento de Marimbas Home', live: false, title: 'mb_title', forL: 'mb_for', desc: 'mb_p', btn: 'mb_btn', href: 'mailto:enrique@marimbashome.com?subject=Minibar%20Digital', tags: ['Catálogo personalizable','Pedidos en tiempo real','Multi-pago'] },
+  { icon: '📊', bg: 'rgba(74,124,89,0.15)', img: '/images/prod-dashboard.jpg', alt: 'Cocina y comedor de un alojamiento de Marimbas Home', live: false, title: 'ad_title', forL: 'ad_for', desc: 'ad_p', btn: 'ad_btn', href: 'mailto:enrique@marimbashome.com?subject=Admin%20Dashboard', tags: ['Revenue en tiempo real','Reportes financieros','Multi-canal'] },
+  { icon: '🧹', bg: 'rgba(74,124,89,0.15)', img: '/images/prod-cleanbot.jpg', alt: 'Comedor de un alojamiento de Marimbas Home con mesa de madera', live: false, title: 'cb_title', forL: 'cb_for', desc: 'cb_p', btn: 'cb_btn', href: 'mailto:enrique@marimbashome.com?subject=Rumae', tags: ['WhatsApp nativo','Asignación automática','Multi-propiedad'] },
 ]
 
 export default function Products() {
@@ -30,7 +30,7 @@ export default function Products() {
                 <div className="prod-image" aria-hidden="true">
                   <Image
                     src={p.img}
-                    alt=""
+                    alt={p.alt}
                     fill
                     sizes="(max-width: 900px) 100vw, 50vw"
                     className="prod-img"

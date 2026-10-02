@@ -12,7 +12,7 @@ export default function Hero({ propiedades }: { propiedades: number }) {
         <div className="hero-bg-image">
           <Image
             src="/images/hero-home.jpg"
-            alt=""
+            alt="Sala de estar de un alojamiento de Marimbas Home"
             fill
             priority
             sizes="100vw"

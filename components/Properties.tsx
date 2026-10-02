@@ -20,7 +20,7 @@ export default function Properties() {
               <div className="prop-zone-image" aria-hidden="true">
                 <Image
                   src="/images/cdmx.jpg"
-                  alt=""
+                  alt="Sala de un departamento de Marimbas Home en Ciudad de México"
                   fill
                   sizes="(max-width: 900px) 100vw, 50vw"
                   className="prop-zone-img"
@@ -56,7 +56,7 @@ export default function Properties() {
               <div className="prop-zone-image" aria-hidden="true">
                 <Image
                   src="/images/chiapas.jpg"
-                  alt=""
+                  alt="Fachada de una casa de Marimbas Home en Chiapas"
                   fill
                   sizes="(max-width: 900px) 100vw, 50vw"
                   className="prop-zone-img"
