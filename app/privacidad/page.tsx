@@ -1,11 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import LogoIcon from '@/components/LogoIcon'
+import { siteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Aviso de Privacidad — Marimbas Home',
   description:
     'Aviso de Privacidad Integral de Marimbas Home conforme a la LFPDPPP mexicana, el RGPD europeo y la CCPA de California.',
+  // Canónico propio: antes heredaba el del home desde el layout y Google
+  // descartaba esta página por considerarla duplicado de la portada.
+  alternates: {
+    canonical: `${siteUrl}/privacidad`,
+  },
 }
 
 // Contenido fuente: Aviso de Privacidad Integral v3 (16-jun-2026), el mismo

@@ -1,10 +1,9 @@
 import type { MetadataRoute } from 'next'
+import { siteUrl } from '@/lib/site'
 
-// Con www: el ápice responde 307 y manda aquí. Apuntar el canónico, los
-// idiomas alternos y el mapa del sitio a una dirección que primero redirige
-// diluye la señal en vez de declarar el destino final.
-const siteUrl = 'https://www.marimbashome.com'
-
+// Regla: cada URL de este mapa debe responder 200 en www.
+// - /blog se quitó: redirige (308) a book.marimbashome.com, otro dominio.
+// - /privacy.html se quitó: ahora es un 308 a /privacidad; se lista el destino.
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
@@ -23,16 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${siteUrl}/privacy.html`,
+      url: `${siteUrl}/privacidad`,
       changeFrequency: 'yearly',
       priority: 0.3,
-    },
-    {
-      // Blog is served via Vercel rewrite to the marimbas-blog project.
-      // Included here so Google crawls /blog via this sitemap.
-      url: `${siteUrl}/blog`,
-      changeFrequency: 'weekly',
-      priority: 0.8,
     },
   ]
 }

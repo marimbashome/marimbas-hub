@@ -1,14 +1,19 @@
 {
   "redirects": [
     {
+      "source": "/privacy.html",
+      "destination": "/privacidad",
+      "permanent": true
+    },
+    {
       "source": "/blog",
       "destination": "https://book.marimbashome.com/es/guides",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/blog/:path*",
       "destination": "https://book.marimbashome.com/es/guides/:path*",
-      "permanent": false
+      "permanent": true
     }
   ]
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import Script from 'next/script'
+import { siteUrl } from '@/lib/site'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -15,12 +16,12 @@ const inter = Inter({
   display: 'swap',
 })
 
-// Con www: el ápice responde 307 y manda aquí. Apuntar el canónico, los
-// idiomas alternos y el mapa del sitio a una dirección que primero redirige
-// diluye la señal en vez de declarar el destino final.
-const siteUrl = 'https://www.marimbashome.com'
 const ogImage = `${siteUrl}/opengraph-image`
 
+// El canónico NO se declara aquí: en el App Router un `alternates` del layout
+// lo heredan TODOS los hijos, así que /privacidad terminaba declarando el home
+// como su canónico y Google la descartaba. Cada página declara el suyo
+// (app/page.tsx para el home, app/privacidad/page.tsx para /privacidad).
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Marimbas Home — Tu Hogar en México',
@@ -39,17 +40,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'Marimbas Home' }],
   verification: {
     google: 'google4a0dc3d8d43a19b2',
-  },
-  alternates: {
-    canonical: siteUrl,
-    // Sin alternante 'en': apuntaba a esta misma dirección, que desde el
-    // servidor solo sirve español (el cambio de idioma es un botón que actúa en
-    // el navegador y nunca cambia la URL). Declarar una traducción que los
-    // buscadores no pueden ver es una promesa falsa; se declara lo que hay.
-    languages: {
-      'es-MX': siteUrl,
-      'x-default': siteUrl,
-    },
   },
   openGraph: {
     title: 'Marimbas Home — Tu Hogar en México',
