@@ -4,7 +4,7 @@ import { useI18n } from '@/lib/i18n'
 import FadeUp from './FadeUp'
 import ArrowIcon from './ArrowIcon'
 
-export default function Properties() {
+export default function Properties({ propiedades }: { propiedades: number }) {
   const { t } = useI18n()
   return (
     <section className="section properties" id="properties">
@@ -16,49 +16,13 @@ export default function Properties() {
         </FadeUp>
         <div className="prop-grid">
           <FadeUp delay={1}>
-            <a href="https://book.marimbashome.com" className="prop-zone" data-zone="cdmx">
-              <div className="prop-zone-image" aria-hidden="true">
-                <Image
-                  src="/images/cdmx.jpg"
-                  alt="Sala de un departamento de Marimbas Home en Ciudad de México"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 50vw"
-                  className="prop-zone-img"
-                />
-              </div>
-              <div className="prop-zone-gradient" aria-hidden="true" />
-              <div className="prop-zone-inner">
-                <div className="prop-zone-pin">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>México</span>
-                </div>
-                <div className="prop-zone-name">{t('cdmx_name')}</div>
-                <div className="prop-zone-desc">{t('cdmx_desc')}</div>
-                <div className="prop-highlights">
-                  <span className="prop-tag">La Condesa</span>
-                  <span className="prop-tag">Lofts &amp; Studios</span>
-                  <span className="prop-tag">{t('tag_pet_friendly')}</span>
-                  <span className="prop-tag">{t('tag_wifi')}</span>
-                </div>
-                <div className="prop-stats">
-                  <div className="prop-stat"><div className="prop-stat-num">4+</div><div className="prop-stat-label">{t('stat_spaces')}</div></div>
-                  <div className="prop-stat"><div className="prop-stat-num">2–4</div><div className="prop-stat-label">{t('stat_guests')}</div></div>
-                  <div className="prop-stat"><div className="prop-stat-num">$800+</div><div className="prop-stat-label">{t('stat_per_night')}</div></div>
-                </div>
-                <span className="prop-zone-cta">
-                  {t('hero_btn1')} <ArrowIcon />
-                </span>
-              </div>
-            </a>
-          </FadeUp>
-          <FadeUp delay={2}>
             <a href="https://book.marimbashome.com" className="prop-zone" data-zone="chiapas">
               <div className="prop-zone-image" aria-hidden="true">
                 <Image
                   src="/images/chiapas.jpg"
                   alt="Fachada de una casa de Marimbas Home en Chiapas"
                   fill
-                  sizes="(max-width: 900px) 100vw, 50vw"
+                  sizes="(max-width: 1200px) 100vw, 1200px"
                   className="prop-zone-img"
                 />
               </div>
@@ -74,12 +38,13 @@ export default function Properties() {
                   <span className="prop-tag">Tuxtla Gutiérrez</span>
                   <span className="prop-tag">Berriozábal</span>
                   <span className="prop-tag">Coita</span>
+                  <span className="prop-tag">{t('tag_lofts')}</span>
                   <span className="prop-tag">{t('tag_casas')}</span>
                   <span className="prop-tag">{t('tag_jardin')}</span>
                 </div>
                 <div className="prop-stats">
-                  <div className="prop-stat"><div className="prop-stat-num">20+</div><div className="prop-stat-label">{t('stat_spaces')}</div></div>
-                  <div className="prop-stat"><div className="prop-stat-num">2–8</div><div className="prop-stat-label">{t('stat_guests')}</div></div>
+                  <div className="prop-stat"><div className="prop-stat-num">{propiedades}</div><div className="prop-stat-label">{t('stat_spaces')}</div></div>
+                  <div className="prop-stat"><div className="prop-stat-num">1–20</div>{/* Rango verificado contra la base el 2026-10-04: de 1 a 20 huéspedes según la propiedad. */}<div className="prop-stat-label">{t('stat_guests')}</div></div>
                   <div className="prop-stat"><div className="prop-stat-num">$210+</div><div className="prop-stat-label">{t('stat_per_night')}</div></div>
                 </div>
                 <span className="prop-zone-cta">

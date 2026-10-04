@@ -16,8 +16,20 @@
 
 const MAPA_DEL_SITIO = 'https://book.marimbashome.com/sitemap.xml';
 
-/** Último valor verificado contra la base (2026-08-18). Solo se usa si la consulta falla. */
-export const PROPIEDADES_RESPALDO = 25;
+/**
+ * Fichas que el mapa del sitio todavía publica pero que este sitio no anuncia:
+ * Marimbas dejó la Ciudad de México y estas se archivan el 2-nov-2026. Después
+ * de esa fecha desaparecen solas del mapa y esta lista deja de tener efecto;
+ * se puede borrar entonces. Se enumera lo que se EXCLUYE para que una ficha
+ * nueva de Chiapas cuente sin tocar este archivo.
+ */
+const FUERA_DEL_CONTEO = new Set([
+  'book.marimbashome.com/es/property/2-br-hipster-apartment-esquina-del-chilaquil',
+  'book.marimbashome.com/es/property/condesa-industrial-style-loft-chilaquil',
+]);
+
+/** Último valor verificado contra la base (2026-10-04, solo Chiapas). Solo se usa si la consulta falla. */
+export const PROPIEDADES_RESPALDO = 18;
 
 export async function contarPropiedades(): Promise<number> {
   try {
@@ -33,7 +45,14 @@ export async function contarPropiedades(): Promise<number> {
     }
     const xml = await res.text();
     const encontradas = xml.match(/book\.marimbashome\.com\/es\/property\/[a-z0-9-]+/g) ?? [];
-    const unicas = new Set(encontradas);
+    const todas = new Set(encontradas);
+    // Si una ficha de la lista ya no aparece, o se archivó (lo esperado después
+    // del 2-nov: borrar la lista) o cambió de dirección y la estaríamos contando.
+    const ausentes = [...FUERA_DEL_CONTEO].filter((url) => !todas.has(url));
+    if (ausentes.length > 0) {
+      console.warn(`[inventario] ${ausentes.length} ficha(s) de FUERA_DEL_CONTEO ya no están en el mapa del sitio: si ya se archivaron, borra la lista; si cambiaron de dirección, actualízala`, ausentes);
+    }
+    const unicas = new Set([...todas].filter((url) => !FUERA_DEL_CONTEO.has(url)));
     // Un mapa del sitio vacío o a medias no debe borrar el número de la portada.
     // Si no encontramos ninguna, se avisa: quiere decir que cambió el formato o
     // que llegó otra cosa (una página de mantenimiento responde 200 igual), y

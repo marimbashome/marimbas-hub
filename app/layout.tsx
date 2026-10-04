@@ -26,15 +26,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Marimbas Home — Tu Hogar en México',
   description:
-    'Departamentos y casas para tu próxima estancia en Ciudad de México y Chiapas. Más de 5,000 huéspedes confían en Marimbas Home desde 2015.',
+    'Casas, lofts y estudios para tu próxima estancia en Chiapas. Más de 5,000 huéspedes confían en Marimbas Home desde 2015.',
   keywords: [
     'Marimbas Home',
     'renta vacacional México',
-    'Airbnb Condesa',
     'Airbnb Tuxtla',
-    'hospedaje CDMX',
+    'renta vacacional Chiapas',
     'hospedaje Chiapas',
-    'departamentos CDMX',
+    'hospedaje Tuxtla Gutiérrez',
     'casas Tuxtla',
   ],
   authors: [{ name: 'Marimbas Home' }],
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Marimbas Home — Tu Hogar en México',
     description:
-      'Espacios con carácter en CDMX y Chiapas. Check-in digital, atención personal, más de 10 años de experiencia.',
+      'Espacios con carácter en Chiapas. Check-in digital, atención personal, más de 10 años de experiencia.',
     type: 'website',
     url: siteUrl,
     siteName: 'Marimbas Home',
@@ -55,7 +54,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Marimbas Home — Tu Hogar en México',
     description:
-      'Departamentos y casas en CDMX y Chiapas. Más de 5,000 huéspedes desde 2015.',
+      'Casas, lofts y estudios en Chiapas. Más de 5,000 huéspedes desde 2015.',
     // twitter:image auto-inherited from opengraph-image.tsx
   },
   robots: {
@@ -80,10 +79,9 @@ const organizationSchema = {
   description:
     // Sin cifras a mano: este texto no se puede derivar aquí y un número
     // escrito se pudre en semanas (decía 28, luego 27, y la base iba en 25).
-    'Operador de hospedaje de renta vacacional en Ciudad de México y Chiapas desde 2015.',
+    'Operador de hospedaje de renta vacacional en Chiapas desde 2015.',
   foundingDate: '2015-05',
   areaServed: [
-    { '@type': 'City', name: 'Ciudad de México' },
     { '@type': 'City', name: 'Tuxtla Gutiérrez' },
     { '@type': 'City', name: 'Berriozabal' },
     { '@type': 'City', name: 'Ocozocoautla' },
