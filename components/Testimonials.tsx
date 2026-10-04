@@ -4,7 +4,7 @@ import { useI18n } from '@/lib/i18n'
 import FadeUp from './FadeUp'
 
 const slides = [
-  { key: 't1', initials: 'MC', tone: 'copper' as const },
+  { key: 't1', initials: 'AM', tone: 'copper' as const },
   { key: 't2', initials: 'AR', tone: 'slate' as const },
   { key: 't3', initials: 'LS', tone: 'sage' as const },
 ]

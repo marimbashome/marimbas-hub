@@ -21,7 +21,7 @@ const translations: Record<string, Record<Lang, string>> = {
     en: 'Spaces with character in Chiapas. Frictionless check-in, real people, and everything ready so you feel at home from the moment you arrive.',
   },
   hero_btn1: { es: 'Buscar Disponibilidad', en: 'Check Availability' },
-  hero_btn2: { es: 'Conoce Chiapas', en: 'Explore Chiapas' },
+  hero_btn2: { es: 'Explora Chiapas', en: 'Explore Chiapas' },
   trust1_label: { es: 'Estancias completadas', en: 'Stays completed' },
   trust2_label: { es: 'Años de experiencia', en: 'Years of experience' },
   trust3_label: { es: 'Espacios disponibles', en: 'Spaces available' },
@@ -32,7 +32,7 @@ const translations: Record<string, Record<Lang, string>> = {
   about_title: { es: 'Hospitalidad con el ritmo de\u00a0la\u00a0marimba', en: 'Hospitality with the rhythm of\u00a0the\u00a0marimba' },
   about_p1: {
     es: 'Marimbas Home nació en 2015 con una idea sencilla: que cada huésped se sienta bienvenido de verdad. Hoy recibimos viajeros en Chiapas, la tierra de la marimba.',
-    en: 'Marimbas Home was born in 2015 with a simple idea: that every guest should feel truly welcome. Today we host travelers in Chiapas, the home of the marimba.',
+    en: 'Marimbas Home was born in 2015 with a simple idea: that every guest should feel truly welcome. Today we host travelers in Chiapas, the land of the marimba.',
   },
   about_p2: {
     es: 'Nuestro nombre viene de la marimba chiapaneca — el instrumento que llena de calidez cualquier espacio. Eso es lo que buscamos: que llegues a un lugar que suena a hogar.',

@@ -554,7 +554,7 @@ body {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
-    .about-grid, .prop-grid, .owners-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-grid, .owners-grid { grid-template-columns: 1fr; gap: 40px; }
     .exp-grid { grid-template-columns: 1fr; }
     .trust-bar { gap: 24px; }
     .trust-divider { height: 24px; }
