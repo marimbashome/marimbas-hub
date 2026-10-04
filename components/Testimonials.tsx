@@ -5,8 +5,8 @@ import FadeUp from './FadeUp'
 
 const slides = [
   { key: 't1', initials: 'AM', tone: 'copper' as const },
-  { key: 't2', initials: 'AR', tone: 'slate' as const },
-  { key: 't3', initials: 'LS', tone: 'sage' as const },
+  { key: 't2', initials: 'AH', tone: 'slate' as const },
+  { key: 't3', initials: 'AS', tone: 'sage' as const },
 ]
 
 export default function Testimonials() {

@@ -45,7 +45,14 @@ export async function contarPropiedades(): Promise<number> {
     }
     const xml = await res.text();
     const encontradas = xml.match(/book\.marimbashome\.com\/es\/property\/[a-z0-9-]+/g) ?? [];
-    const unicas = new Set([...encontradas].filter((slug) => !FUERA_DEL_CONTEO.has(slug)));
+    const todas = new Set(encontradas);
+    // Si una ficha de la lista ya no aparece, o se archivó (lo esperado después
+    // del 2-nov: borrar la lista) o cambió de dirección y la estaríamos contando.
+    const ausentes = [...FUERA_DEL_CONTEO].filter((url) => !todas.has(url));
+    if (ausentes.length > 0) {
+      console.warn(`[inventario] ${ausentes.length} ficha(s) de FUERA_DEL_CONTEO ya no están en el mapa del sitio: si ya se archivaron, borra la lista; si cambiaron de dirección, actualízala`, ausentes);
+    }
+    const unicas = new Set([...todas].filter((url) => !FUERA_DEL_CONTEO.has(url)));
     // Un mapa del sitio vacío o a medias no debe borrar el número de la portada.
     // Si no encontramos ninguna, se avisa: quiere decir que cambió el formato o
     // que llegó otra cosa (una página de mantenimiento responde 200 igual), y

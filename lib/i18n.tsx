@@ -86,15 +86,15 @@ const translations: Record<string, Record<Lang, string>> = {
   },
   t1_author: { es: '— Huésped en Tuxtla Gutiérrez, julio 2026', en: '— Guest in Tuxtla Gutiérrez, July 2026' },
   t2_quote: {
-    es: 'Nos encantó la casa en Tuxtla. Llegamos tarde y no hubo ningún problema con el acceso. Todo limpio, bien equipado, y el equipo siempre atento por WhatsApp.',
-    en: 'We loved the house in Tuxtla. We arrived late and had no issues with access. Everything clean, well-equipped, and the team always responsive on WhatsApp.',
+    es: 'Todo estuvo excelente, muy buena comunicación. Gracias, sin duda nos volveríamos a hospedar',
+    en: 'Everything was excellent, very good communication. Thank you, we would definitely stay again',
   },
-  t2_author: { es: '— Huésped en Tuxtla. Sahily, enero 2026', en: '— Guest at Tuxtla. Sahily, January 2026' },
+  t2_author: { es: '— Huésped en Coita, julio 2026', en: '— Guest in Coita, July 2026' },
   t3_quote: {
-    es: 'Tercer viaje con Marimbas y siempre es la misma calidad. El minibar es un detalle increíble. Se nota que cuidan cada propiedad como si fuera su casa.',
-    en: 'Third trip with Marimbas and it\'s always the same quality. The minibar is an amazing touch. You can tell they care for every property like it\'s their own.',
+    es: 'Excelente lugar, todo te queda a la vuelta de la esquina prácticamente, muy seguro y limpio. claro que volvería a hospedarme aquí.',
+    en: 'Excellent place, practically everything is around the corner, very safe and clean. Of course I would stay here again.',
   },
-  t3_author: { es: '— Huésped recurrente, marzo 2026', en: '— Returning guest, March 2026' },
+  t3_author: { es: '— Huésped en Tuxtla Gutiérrez, abril 2026', en: '— Guest in Tuxtla Gutiérrez, April 2026' },
   // Properties
   dest_label: { es: 'Nuestro Destino', en: 'Our Destination' },
   dest_title: { es: 'Chiapas, con el ritmo del sureste', en: 'Chiapas, at the pace of the southeast' },
