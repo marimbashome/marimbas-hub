@@ -6,7 +6,6 @@ import Channels from '@/components/Channels'
 import About from '@/components/About'
 import Experience from '@/components/Experience'
 import Testimonials from '@/components/Testimonials'
-import Products from '@/components/Products'
 import Properties from '@/components/Properties'
 import Owners from '@/components/Owners'
 import Footer from '@/components/Footer'
@@ -44,8 +43,7 @@ export default async function Home() {
       <About />
       <Experience />
       <Testimonials />
-      <Products />
-      <Properties />
+      <Properties propiedades={propiedades} />
       <Owners />
       <Footer />
     </I18nProvider>

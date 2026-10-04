@@ -39,7 +39,6 @@ export default function Nav() {
         <ul className="nav-links">
           <li><a href="#about">{t('nav_about')}</a></li>
           <li><a href="#experience">{t('nav_exp')}</a></li>
-          <li><a href="#tech">{t('nav_prod')}</a></li>
           <li><a href="#properties">{t('nav_dest')}</a></li>
           <li><a href="https://propietarios.marimbashome.com" target="_blank" rel="noopener noreferrer">{t('nav_owners')}</a></li>
           <li><a href="https://book.marimbashome.com" className="nav-cta">{t('nav_cta')}</a></li>
@@ -55,7 +54,6 @@ export default function Nav() {
           <ul>
             <li><a href="#about" onClick={closeMenu}>{t('nav_about')}</a></li>
             <li><a href="#experience" onClick={closeMenu}>{t('nav_exp')}</a></li>
-            <li><a href="#tech" onClick={closeMenu}>{t('nav_prod')}</a></li>
             <li><a href="#properties" onClick={closeMenu}>{t('nav_dest')}</a></li>
             <li><a href="https://propietarios.marimbashome.com" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>{t('nav_owners')}</a></li>
             <li><a href="https://book.marimbashome.com" className="nav-cta" onClick={closeMenu}>{t('nav_cta')}</a></li>

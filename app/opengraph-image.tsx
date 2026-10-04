@@ -92,7 +92,7 @@ export default async function OGImage() {
               lineHeight: 1.35,
             }}
           >
-            Departamentos y casas en CDMX y Chiapas
+            Casas, lofts y estudios en Chiapas
           </div>
         </div>
 

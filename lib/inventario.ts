@@ -16,8 +16,20 @@
 
 const MAPA_DEL_SITIO = 'https://book.marimbashome.com/sitemap.xml';
 
-/** Último valor verificado contra la base (2026-08-18). Solo se usa si la consulta falla. */
-export const PROPIEDADES_RESPALDO = 25;
+/**
+ * Fichas que el mapa del sitio todavía publica pero que este sitio no anuncia:
+ * Marimbas dejó la Ciudad de México y estas se archivan el 2-nov-2026. Después
+ * de esa fecha desaparecen solas del mapa y esta lista deja de tener efecto;
+ * se puede borrar entonces. Se enumera lo que se EXCLUYE para que una ficha
+ * nueva de Chiapas cuente sin tocar este archivo.
+ */
+const FUERA_DEL_CONTEO = new Set([
+  'book.marimbashome.com/es/property/2-br-hipster-apartment-esquina-del-chilaquil',
+  'book.marimbashome.com/es/property/condesa-industrial-style-loft-chilaquil',
+]);
+
+/** Último valor verificado contra la base (2026-10-04, solo Chiapas). Solo se usa si la consulta falla. */
+export const PROPIEDADES_RESPALDO = 18;
 
 export async function contarPropiedades(): Promise<number> {
   try {
@@ -33,7 +45,7 @@ export async function contarPropiedades(): Promise<number> {
     }
     const xml = await res.text();
     const encontradas = xml.match(/book\.marimbashome\.com\/es\/property\/[a-z0-9-]+/g) ?? [];
-    const unicas = new Set(encontradas);
+    const unicas = new Set([...encontradas].filter((slug) => !FUERA_DEL_CONTEO.has(slug)));
     // Un mapa del sitio vacío o a medias no debe borrar el número de la portada.
     // Si no encontramos ninguna, se avisa: quiere decir que cambió el formato o
     // que llegó otra cosa (una página de mantenimiento responde 200 igual), y

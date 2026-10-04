@@ -35,8 +35,7 @@ export default function Experience() {
               <p>{t('exp2_p')}</p>
               {/* Sin enlace a propósito: minibar.marimbashome.com no existe en
                   el DNS y quien lo tocaba caía en un error del navegador, no en
-                  una página. Products.tsx y el pie ya se habían corregido en
-                  julio; este quedó suelto. Dónde vive Minibar de cara al público
+                  una página. Dónde vive el minibar de cara al público
                   es una decisión abierta — cuando exista, el enlace vuelve. */}
             </div>
           </FadeUp>
